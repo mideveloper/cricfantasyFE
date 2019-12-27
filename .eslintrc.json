@@ -20,7 +20,8 @@
     "disallowMultipleVarDecl": 0,
     "maximumLineLength": 0,
     "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"]
+    "quotes": ["error", "single"],
+    "react/prop-types": 0
   },
   "settings": {
     "react": {
