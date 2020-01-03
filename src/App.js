@@ -5,7 +5,7 @@ import Register from './containers/Register';
 import Login from './containers/Login';
 import Test from './containers/TestComponent';
 // import "./App.css";
-import './assets/scss/style.scss';
+import './assets/scss/main.css';
 
 import { Provider } from 'react-redux';
 import store from './store';
