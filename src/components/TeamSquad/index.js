@@ -1,3 +1,3 @@
-import TeamSquad from "./TeamSquad";
+import TeamSquad from './TeamSquad';
 
 export default TeamSquad;

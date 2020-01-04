@@ -1,6 +1,11 @@
-import React from "react";
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-const Header = () => {
+import { openLoginDialog, closeLoginDialog } from '../../actions';
+import LoginDialog from '../LoginDialog';
+
+const Header = props => {
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -45,20 +50,32 @@ const Header = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a href="contact.html" className="nav-link">
+              <a href="#" className="nav-link">
                 Contact
               </a>
             </li>
             <li className="nav-item cta">
-              <a href="#" className="nav-link">
+              <a
+                style={{ cursor: 'pointer' }}
+                onClick={() => props.openLoginDialog()}
+                className="nav-link"
+              >
                 Play
               </a>
             </li>
           </ul>
         </div>
       </div>
+      <LoginDialog
+        open={props.loginDialogState.open}
+        onClose={() => props.closeLoginDialog()}
+      />
     </nav>
   );
 };
 
-export default Header;
+const mapStateToProps = state => ({ loginDialogState: state.loginReducer });
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ openLoginDialog, closeLoginDialog }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -1,5 +1,5 @@
-import React from "react";
-import images from "../../styles/styles";
+import React from 'react';
+import images from '../../styles/styles';
 
 const TeamSquad = () => {
   return (
@@ -17,8 +17,8 @@ const TeamSquad = () => {
               Our Team <span>Squad</span>
             </h2>
             <p>
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia
+              Far far away, behind the word mountains, far from the countries Vokalia and
+              Consonantia
             </p>
           </div>
         </div>
