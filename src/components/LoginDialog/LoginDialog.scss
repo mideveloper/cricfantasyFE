@@ -52,6 +52,19 @@
       height: 40px;
       border-radius: 5px;
       background-color: #ffb400;
+      transition: 0.3s all ease;
+    }
+    button:hover {
+      transition: 0.3s all ease;
+      background-color: #000;
+      color: #fff;
+    }
+
+    button:disabled,
+    button[disabled] {
+      background-color: #cccccc;
+      color: #666666;
+      transition: 0.3s all ease;
     }
   }
 }

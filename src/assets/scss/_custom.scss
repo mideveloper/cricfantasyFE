@@ -1,0 +1,178 @@
+/*---- Custom Css -------*/
+body {
+    color: $darken !important;
+    /*---- Nav Start -------*/
+    .ftco-navbar-light {
+      .container {
+        &:before {
+          position: absolute;
+          top: 0;
+          left: -100%;
+          bottom: 0;
+          content: "";
+          width: 100%;
+          background: $darken;
+        }
+      }
+      .navbar-brand {
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
+        font-size: 30px;
+      }
+    }
+    /*---- Nav End -------*/
+    /*---- Footer Start -------*/
+    .ftco-footer {
+      background-color: $darken;
+      padding: 1em 0;
+      .ftco-footer-widget {
+        h2 {
+          margin-bottom: 0;
+          font-size: 30px;
+        }
+      }
+      .foo-nav {
+        .navbar-nav {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          .nav-link {
+            color: $white;
+            font-weight: 600;
+          }
+        }
+      }
+      .copyright {
+        font-size: 12px;
+        margin-bottom: 0;
+        color: $white;
+      }
+    }
+    /*---- Footer End -------*/
+    /*---- Footer Start -------*/
+    .leaderboard {
+      .table {
+        thead {
+          th {
+            text-transform: uppercase;
+            font-size: 16px;
+            line-height: 1;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            color: $white;
+            &:first-child {
+              padding-left: 40px;
+            }
+            &:nth-child(n + 3) {
+              text-align: center;
+              width: 200px;
+            }
+          }
+        }
+        tbody {
+          border-left: solid 1px $lightgray;
+          border-right: solid 1px $lightgray;
+          tr {
+            background: transparent;
+            transition: $transition;
+            td {
+              font-weight: 700;
+              text-transform: initial;
+              &:nth-child(n + 3) {
+                text-align: center;
+              }
+            }
+            &:hover {
+              box-shadow: 0px 5px 10px 0 rgba(0, 0, 0, 0.1);
+            }
+          }
+        }
+      }
+      .logo-team {
+        align-items: center;
+        .logo {
+          width: 35px;
+          height: 35px;
+          border: 2px solid $black;
+          margin-right: 15px;
+          border-radius: 50%;
+          -webkit-box-shadow: 0px 24px 36px -11px rgba(0, 0, 0, 0.09);
+          box-shadow: 0px 24px 36px -11px rgba(0, 0, 0, 0.09);
+        }
+      }
+    }
+    /*---- Footer End -------*/
+    /*---- Button Start -------*/
+    .btn {
+      &.btn-link {
+        color: $darken;
+        font-weight: 900;
+        font-size: 16px;
+        text-transform: uppercase;
+        &:hover {
+          text-decoration: none;
+          color: $primary;
+        }
+      }
+    }
+    /*---- Button End -------*/
+    /*---- Game Report Start -------*/
+    .scoreboard {
+      &.game-report {
+        padding: 1em 1em 0.5em 1em;
+        @include border-radius(10px);
+        transition: $transition;
+        &:hover {
+            box-shadow: 0px 15px 24px 0 rgba(35, 41, 49, 0.11);
+            border: transparent;
+        }
+        .divider {
+          span {
+            padding: 0 10px 10px 10px;
+            display: inline-block;
+            letter-spacing: 0px;
+            font-size: 16px;
+            font-weight: 900;
+          }
+        }
+        .vsWd {
+            width: 30%;
+        }
+        .sport-team {
+          h3 {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 200;
+          }
+          .logo {
+            width: 70px;
+            height: 70px;
+            border: 2px solid $black;
+          }
+          .team-name {
+            margin-top: 10px;
+            text-transform: uppercase;
+            font-size: 14px;
+          }
+        }
+        .date {
+          font-size: 12px;
+          font-weight: 600;
+          color: $gray;
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
+    /*---- Game Report End -------*/
+  }
+  .align-left {
+    text-align: left;
+  }
+  .align-center {
+    text-align: center;
+  }
+  .align-right {
+    text-align: right;
+  }

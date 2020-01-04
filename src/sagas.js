@@ -24,12 +24,15 @@ function* loginSaga({ payload }) {
     const { data } = yield call(login, payload);
     if (data.data) {
       yield put({ type: LOGIN_SUCCESS_ACTION, payload: data });
-      setLocalStorage(data.data)
+      setLocalStorage(data.data);
     } else {
       yield put({ type: LOGIN_FAIL_ACTION, payload: data });
     }
   } catch (e) {
-    // console.log(e);
+    yield put({
+      type: LOGIN_FAIL_ACTION,
+      payload: { meta: { message: 'Could not connect to server' } },
+    });
   }
 }
 

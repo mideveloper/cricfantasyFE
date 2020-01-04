@@ -18,12 +18,16 @@ class LoginDialog extends React.Component {
     this.setState({
       username: '',
       password: '',
+      isValid: false,
     });
     this.props.onClose();
   };
 
   handleChange = ({ value, name }) => {
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }, () => {
+      const { username, password } = this.state;
+      this.setState({ isValid: (!!username && !!password) });
+    });
   };
 
   login = e => {
@@ -34,8 +38,7 @@ class LoginDialog extends React.Component {
 
   render() {
     const { open, loginResponse } = this.props;
-    console.log(loginResponse);
-    const { username, password } = this.state;
+    const { username, password, isValid } = this.state;
     return (
       <Dialog
         onClose={this.handleClose}
@@ -64,8 +67,8 @@ class LoginDialog extends React.Component {
               onChange={e => this.handleChange(e.target)}
             />
             <div className="btn-container">
-            <p className="error-msg">{loginResponse.errMessage}</p>
-              <button type="button" onClick={e => this.login(e)}>
+              <p className="error-msg">{loginResponse.errMessage}</p>
+              <button disabled={!isValid} type="button" onClick={e => this.login(e)}>
                 Login
               </button>
             </div>

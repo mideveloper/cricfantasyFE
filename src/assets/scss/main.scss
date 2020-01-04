@@ -1,16 +1,7 @@
+// @import 'bootstrap/variables';
 @import 'bootstrap/bootstrap';
-@import 'bootstrap/variables';
-
-$font-primary: 'Nunito Sans',Arial, sans-serif;
-
-$white: #fff;
-$black: #000000;
-$darken: #232931;
-
-$primary: #ffb400;
-$secondary: #6b76ff;
-
-
+@import 'variables';
+@import 'custom';
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;

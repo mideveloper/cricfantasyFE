@@ -7,25 +7,13 @@ import LoginDialog from '../LoginDialog';
 
 const Header = props => {
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-      id="ftco-navbar"
-    >
+    <nav className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       <div className="container">
-        <a className="navbar-brand" href="index.html">
-          <span>Cricket Fantasy League</span>
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#ftco-nav"
-          aria-controls="ftco-nav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <a className="navbar-brand" href="index.html"><span>Knights</span></a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+          aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="oi oi-menu"></span> Menu
-        </button>
+			</button>
 
         <div className="collapse navbar-collapse" id="ftco-nav">
           <ul className="navbar-nav ml-auto">

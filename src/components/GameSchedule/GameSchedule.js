@@ -3,85 +3,198 @@ import images from "../../styles/styles";
 
 const GameSchedule = () => {
   return (
-    <section className="ftco-section ftco-game-schedule ftco-no-pt">
+    <section className="ftco-section">
       <div className="container">
         <div className="row">
-          <div className="col-md-12 heading-section ftco-animate mb-4 fadeInUp ftco-animated">
-            <h1>Game Schedule</h1>
+          <div className="col-lg-12">
+            <div className="heading-section ftco-animate">
+              <span className="subheading">Upcoming Games</span>
+              <h2 className="mb-4">Game Scheduel</h2>
+            </div>
           </div>
-        </div>
-        <div className="row ftco-animate fadeInUp ftco-animated">
-          <div className="col-md-12 carousel-game-schedule owl-carousel owl-loaded owl-drag">
-            <div className="item">
-              <div className="game-schedule">
-                <div className="sport-team d-flex align-items-center">
-                  <div className="img logo" style={images.team1}></div>
-                  <div className="pl-4 desc">
-                    <span className="venue">Home @ Arena</span>
-                    <h4 className="team-name">Knight Warrior</h4>
-                    <span className="date">April 17, 2018</span>
+          <div className="col-lg-4 mb-4">
+            <div className="scoreboard mb-5 mb-lg-0 game-report">
+              <div className="divider text-center"><span>FIFA CHAMPIONS LEAGUE</span></div>
+              <div className="d-sm-flex mb-1">
+                <div className="sport-team d-flex align-items-center justify-content-center">
+                  <div>
+                    <div className="img logo m-auto" style={images.person1}>
+                    </div>
+                    <div className="text-center d-flex px-0 px-md-0 ">
+                      <h4 className="team-name">Knight Warrior</h4>
+                    </div>
+                  </div>
+                </div>
+                <div className="sport-team d-flex vsWd align-items-center justify-content-center">
+                  <h3>VS</h3>
+                </div>
+                <div className="sport-team d-flex align-items-center justify-content-center">
+                  <div>
+                    <div className="img logo m-auto order-sm-last" style={images.person1}>
+                    </div>
+                    <div className="text-center d-flex px-0 px-md-0 ">
+                      <h4 className="team-name">Knight Warrior</h4>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div className="text-center date">
+                <p>TUE. FEB 21, 2019</p>
+              </div>
             </div>
-            <div className="item">
-              <div className="game-schedule">
-                <div className="sport-team d-flex align-items-center">
-                  <div className="img logo" style={images.team2}></div>
-                  <div className="pl-4 desc">
-                    <span className="venue">Home @ Arena</span>
-                    <h4 className="team-name">Knight Warrior</h4>
-                    <span className="date">April 17, 2018</span>
+          </div>
+          <div className="col-lg-4 mb-4">
+            <div className="scoreboard mb-5 mb-lg-0 game-report">
+              <div className="divider text-center"><span>FIFA CHAMPIONS LEAGUE</span></div>
+              <div className="d-sm-flex mb-1">
+                <div className="sport-team d-flex align-items-center justify-content-center">
+                  <div>
+                    <div className="img logo m-auto" style={images.person1}>
+                    </div>
+                    <div className="text-center d-flex px-0 px-md-0 ">
+                      <h4 className="team-name">Knight Warrior</h4>
+                    </div>
+                  </div>
+                </div>
+                <div className="sport-team d-flex vsWd align-items-center justify-content-center">
+                  <h3>VS</h3>
+                </div>
+                <div className="sport-team d-flex align-items-center justify-content-center">
+                  <div>
+                    <div className="img logo m-auto order-sm-last" style={images.person1}>
+                    </div>
+                    <div className="text-center d-flex px-0 px-md-0 ">
+                      <h4 className="team-name">Knight Warrior</h4>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div className="text-center date">
+                <p>TUE. FEB 21, 2019</p>
+              </div>
             </div>
-            <div className="item">
-              <div className="game-schedule">
-                <div className="sport-team d-flex align-items-center">
-                  <div className="img logo" style={images.team3}></div>
-                  <div className="pl-4 desc">
-                    <span className="venue">Home @ Arena</span>
-                    <h4 className="team-name">Knight Warrior</h4>
-                    <span className="date">April 17, 2018</span>
+          </div>
+          <div className="col-lg-4 mb-4">
+            <div className="scoreboard mb-5 mb-lg-0 game-report">
+              <div className="divider text-center"><span>FIFA CHAMPIONS LEAGUE</span></div>
+              <div className="d-sm-flex mb-1">
+                <div className="sport-team d-flex align-items-center justify-content-center">
+                  <div>
+                    <div className="img logo m-auto" style={images.person1}>
+                    </div>
+                    <div className="text-center d-flex px-0 px-md-0 ">
+                      <h4 className="team-name">Knight Warrior</h4>
+                    </div>
+                  </div>
+                </div>
+                <div className="sport-team d-flex vsWd align-items-center justify-content-center">
+                  <h3>VS</h3>
+                </div>
+                <div className="sport-team d-flex align-items-center justify-content-center">
+                  <div>
+                    <div className="img logo m-auto order-sm-last" style={images.person1}>
+                    </div>
+                    <div className="text-center d-flex px-0 px-md-0 ">
+                      <h4 className="team-name">Knight Warrior</h4>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div className="text-center date">
+                <p>TUE. FEB 21, 2019</p>
+              </div>
             </div>
-            <div className="item">
-              <div className="game-schedule">
-                <div className="sport-team d-flex align-items-center">
-                  <div className="img logo" style={images.team4}></div>
-                  <div className="pl-4 desc">
-                    <span className="venue">Home @ Arena</span>
-                    <h4 className="team-name">Knight Warrior</h4>
-                    <span className="date">April 17, 2018</span>
+          </div>
+          <div className="col-lg-4 mb-4">
+            <div className="scoreboard mb-5 mb-lg-0 game-report">
+              <div className="divider text-center"><span>FIFA CHAMPIONS LEAGUE</span></div>
+              <div className="d-sm-flex mb-1">
+                <div className="sport-team d-flex align-items-center justify-content-center">
+                  <div>
+                    <div className="img logo m-auto" style={images.person1}>
+                    </div>
+                    <div className="text-center d-flex px-0 px-md-0 ">
+                      <h4 className="team-name">Knight Warrior</h4>
+                    </div>
+                  </div>
+                </div>
+                <div className="sport-team d-flex vsWd align-items-center justify-content-center">
+                  <h3>VS</h3>
+                </div>
+                <div className="sport-team d-flex align-items-center justify-content-center">
+                  <div>
+                    <div className="img logo m-auto order-sm-last" style={images.person1}>
+                    </div>
+                    <div className="text-center d-flex px-0 px-md-0 ">
+                      <h4 className="team-name">Knight Warrior</h4>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div className="text-center date">
+                <p>TUE. FEB 21, 2019</p>
+              </div>
             </div>
-            <div className="item">
-              <div className="game-schedule">
-                <div className="sport-team d-flex align-items-center">
-                  <div className="img logo" style={images.team5}></div>
-                  <div className="pl-4 desc">
-                    <span className="venue">Home @ Arena</span>
-                    <h4 className="team-name">Knight Warrior</h4>
-                    <span className="date">April 17, 2018</span>
+          </div>
+          <div className="col-lg-4 mb-4">
+            <div className="scoreboard mb-5 mb-lg-0 game-report">
+              <div className="divider text-center"><span>FIFA CHAMPIONS LEAGUE</span></div>
+              <div className="d-sm-flex mb-1">
+                <div className="sport-team d-flex align-items-center justify-content-center">
+                  <div>
+                    <div className="img logo m-auto" style={images.person1}>
+                    </div>
+                    <div className="text-center d-flex px-0 px-md-0 ">
+                      <h4 className="team-name">Knight Warrior</h4>
+                    </div>
+                  </div>
+                </div>
+                <div className="sport-team d-flex vsWd align-items-center justify-content-center">
+                  <h3>VS</h3>
+                </div>
+                <div className="sport-team d-flex align-items-center justify-content-center">
+                  <div>
+                    <div className="img logo m-auto order-sm-last" style={images.person1}>
+                    </div>
+                    <div className="text-center d-flex px-0 px-md-0 ">
+                      <h4 className="team-name">Knight Warrior</h4>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div className="text-center date">
+                <p>TUE. FEB 21, 2019</p>
+              </div>
             </div>
-            <div className="item">
-              <div className="game-schedule">
-                <div className="sport-team d-flex align-items-center">
-                  <div className="img logo" style={images.team6}></div>
-                  <div className="pl-4 desc">
-                    <span className="venue">Home @ Arena</span>
-                    <h4 className="team-name">Knight Warrior</h4>
-                    <span className="date">April 17, 2018</span>
+          </div>
+          <div className="col-lg-4 mb-4">
+            <div className="scoreboard mb-5 mb-lg-0 game-report">
+              <div className="divider text-center"><span>FIFA CHAMPIONS LEAGUE</span></div>
+              <div className="d-sm-flex mb-1">
+                <div className="sport-team d-flex align-items-center justify-content-center">
+                  <div>
+                    <div className="img logo m-auto" style={images.person1}>
+                    </div>
+                    <div className="text-center d-flex px-0 px-md-0 ">
+                      <h4 className="team-name">Knight Warrior</h4>
+                    </div>
                   </div>
                 </div>
+                <div className="sport-team d-flex vsWd align-items-center justify-content-center">
+                  <h3>VS</h3>
+                </div>
+                <div className="sport-team d-flex align-items-center justify-content-center">
+                  <div>
+                    <div className="img logo m-auto order-sm-last" style={images.person1}>
+                    </div>
+                    <div className="text-center d-flex px-0 px-md-0 ">
+                      <h4 className="team-name">Knight Warrior</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="text-center date">
+                <p>TUE. FEB 21, 2019</p>
               </div>
             </div>
           </div>
