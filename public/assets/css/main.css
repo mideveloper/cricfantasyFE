@@ -10386,8 +10386,8 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 /*---- Custom Css -------*/
-body {
-  color: #232931 !important;
+body.cricDesign {
+  color: #232931;
   /*---- Nav Start -------*/
   /*---- Nav End -------*/
   /*---- Footer Start -------*/
@@ -10400,7 +10400,7 @@ body {
   /*---- Game Report End -------*/
 }
 
-body .ftco-navbar-light .container:before {
+body.cricDesign .ftco-navbar-light .container:before {
   position: absolute;
   top: 0;
   left: -100%;
@@ -10410,23 +10410,23 @@ body .ftco-navbar-light .container:before {
   background: #232931;
 }
 
-body .ftco-navbar-light .navbar-brand {
+body.cricDesign .ftco-navbar-light .navbar-brand {
   padding-top: 0.9rem;
   padding-bottom: 0.9rem;
   font-size: 30px;
 }
 
-body .ftco-footer {
+body.cricDesign .ftco-footer {
   background-color: #232931;
   padding: 1em 0;
 }
 
-body .ftco-footer .ftco-footer-widget h2 {
+body.cricDesign .ftco-footer .ftco-footer-widget h2 {
   margin-bottom: 0;
   font-size: 30px;
 }
 
-body .ftco-footer .foo-nav .navbar-nav {
+body.cricDesign .ftco-footer .foo-nav .navbar-nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10438,18 +10438,18 @@ body .ftco-footer .foo-nav .navbar-nav {
       justify-content: space-around;
 }
 
-body .ftco-footer .foo-nav .navbar-nav .nav-link {
+body.cricDesign .ftco-footer .foo-nav .navbar-nav .nav-link {
   color: #fff;
   font-weight: 600;
 }
 
-body .ftco-footer .copyright {
+body.cricDesign .ftco-footer .copyright {
   font-size: 12px;
   margin-bottom: 0;
   color: #fff;
 }
 
-body .leaderboard .table thead th {
+body.cricDesign .leaderboard .table thead th {
   text-transform: uppercase;
   font-size: 16px;
   line-height: 1;
@@ -10458,47 +10458,47 @@ body .leaderboard .table thead th {
   color: #fff;
 }
 
-body .leaderboard .table thead th:first-child {
+body.cricDesign .leaderboard .table thead th:first-child {
   padding-left: 40px;
 }
 
-body .leaderboard .table thead th:nth-child(n + 3) {
+body.cricDesign .leaderboard .table thead th:nth-child(n + 3) {
   text-align: center;
   width: 200px;
 }
 
-body .leaderboard .table tbody {
+body.cricDesign .leaderboard .table tbody {
   border-left: solid 1px #ebebeb;
   border-right: solid 1px #ebebeb;
 }
 
-body .leaderboard .table tbody tr {
+body.cricDesign .leaderboard .table tbody tr {
   background: transparent;
   -webkit-transition: 0.3s all ease;
   transition: 0.3s all ease;
 }
 
-body .leaderboard .table tbody tr td {
+body.cricDesign .leaderboard .table tbody tr td {
   font-weight: 700;
   text-transform: initial;
 }
 
-body .leaderboard .table tbody tr td:nth-child(n + 3) {
+body.cricDesign .leaderboard .table tbody tr td:nth-child(n + 3) {
   text-align: center;
 }
 
-body .leaderboard .table tbody tr:hover {
+body.cricDesign .leaderboard .table tbody tr:hover {
   -webkit-box-shadow: 0px 5px 10px 0 rgba(0, 0, 0, 0.1);
           box-shadow: 0px 5px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
-body .leaderboard .logo-team {
+body.cricDesign .leaderboard .logo-team {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-body .leaderboard .logo-team .logo {
+body.cricDesign .leaderboard .logo-team .logo {
   width: 35px;
   height: 35px;
   border: 2px solid #000000;
@@ -10508,32 +10508,32 @@ body .leaderboard .logo-team .logo {
   box-shadow: 0px 24px 36px -11px rgba(0, 0, 0, 0.09);
 }
 
-body .btn.btn-link {
+body.cricDesign .btn.btn-link {
   color: #232931;
   font-weight: 900;
   font-size: 16px;
   text-transform: uppercase;
 }
 
-body .btn.btn-link:hover {
+body.cricDesign .btn.btn-link:hover {
   text-decoration: none;
   color: #ffb400;
 }
 
-body .scoreboard.game-report {
+body.cricDesign .scoreboard.game-report {
   padding: 1em 1em 0.5em 1em;
   border-radius: 10px;
   -webkit-transition: 0.3s all ease;
   transition: 0.3s all ease;
 }
 
-body .scoreboard.game-report:hover {
+body.cricDesign .scoreboard.game-report:hover {
   -webkit-box-shadow: 0px 15px 24px 0 rgba(35, 41, 49, 0.11);
           box-shadow: 0px 15px 24px 0 rgba(35, 41, 49, 0.11);
   border: transparent;
 }
 
-body .scoreboard.game-report .divider span {
+body.cricDesign .scoreboard.game-report .divider span {
   padding: 0 10px 10px 10px;
   display: inline-block;
   letter-spacing: 0px;
@@ -10541,47 +10541,47 @@ body .scoreboard.game-report .divider span {
   font-weight: 900;
 }
 
-body .scoreboard.game-report .vsWd {
+body.cricDesign .scoreboard.game-report .vsWd {
   width: 30%;
 }
 
-body .scoreboard.game-report .sport-team h3 {
+body.cricDesign .scoreboard.game-report .sport-team h3 {
   text-align: center;
   font-size: 40px;
   font-weight: 200;
 }
 
-body .scoreboard.game-report .sport-team .logo {
+body.cricDesign .scoreboard.game-report .sport-team .logo {
   width: 70px;
   height: 70px;
   border: 2px solid #000000;
 }
 
-body .scoreboard.game-report .sport-team .team-name {
+body.cricDesign .scoreboard.game-report .sport-team .team-name {
   margin-top: 10px;
   text-transform: uppercase;
   font-size: 14px;
 }
 
-body .scoreboard.game-report .date {
+body.cricDesign .scoreboard.game-report .date {
   font-size: 12px;
   font-weight: 600;
   color: #999999;
 }
 
-body .scoreboard.game-report .date p {
+body.cricDesign .scoreboard.game-report .date p {
   margin: 0;
 }
 
-.align-left {
+body .align-left {
   text-align: left;
 }
 
-.align-center {
+body .align-center {
   text-align: center;
 }
 
-.align-right {
+body .align-right {
   text-align: right;
 }
 

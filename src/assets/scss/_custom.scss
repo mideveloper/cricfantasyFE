@@ -1,6 +1,7 @@
 /*---- Custom Css -------*/
 body {
-    color: $darken !important;
+  &.cricDesign {
+    color: $darken;
     /*---- Nav Start -------*/
     .ftco-navbar-light {
       .container {
@@ -78,6 +79,7 @@ body {
             td {
               font-weight: 700;
               text-transform: initial;
+              vertical-align: middle;
               &:nth-child(n + 3) {
                 text-align: center;
               }
@@ -123,8 +125,8 @@ body {
         @include border-radius(10px);
         transition: $transition;
         &:hover {
-            box-shadow: 0px 15px 24px 0 rgba(35, 41, 49, 0.11);
-            border: transparent;
+          box-shadow: 0px 15px 24px 0 rgba(35, 41, 49, 0.11);
+          border: transparent;
         }
         .divider {
           span {
@@ -136,7 +138,7 @@ body {
           }
         }
         .vsWd {
-            width: 30%;
+          width: 30%;
         }
         .sport-team {
           h3 {
@@ -166,6 +168,46 @@ body {
       }
     }
     /*---- Game Report End -------*/
+    /*---- Game Report Start -------*/
+    .quickScore {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      background: $white;
+      top: 17%;
+      right: 20%;
+      border: 1px solid $lightgray;
+      cursor: pointer;
+      @include border-radius(50%);
+      box-shadow: 0px 15px 24px 0 rgba($darken, 0.11);
+      .exclamation {
+        background-color: $darken;
+        color: $white;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        font-size: 22px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        line-height: 30px;
+        font-weight: 600;
+        margin: 18.5px 18.5px auto auto;
+        @include border-radius(50%);
+      }
+      &.active {
+        width: 300px;
+        height: 240px;
+        background: $darken;
+        border: 1px solid $darken;
+        @include border-radius(10px);
+        box-shadow: 0px 15px 24px 0 rgba($darken, 0.3);
+        .exclamation {
+          background-color: $white;
+          color: $darken;
+          margin: 12px 12px auto auto;
+        }
+      }
+    }
+    /*---- Game Report End -------*/
   }
   .align-left {
     text-align: left;
@@ -176,3 +218,4 @@ body {
   .align-right {
     text-align: right;
   }
+}
