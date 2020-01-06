@@ -1,6 +1,11 @@
-import React from "react";
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-const Header = () => {
+import { openLoginDialog, closeLoginDialog } from '../../actions';
+import LoginDialog from '../LoginDialog';
+
+const Header = props => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       <div className="container">
@@ -12,18 +17,53 @@ const Header = () => {
 
         <div className="collapse navbar-collapse" id="ftco-nav">
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item "><a href="index.html" className="nav-link">Home</a></li>
-            <li className="nav-item"><a href="about.html" className="nav-link">About</a></li>
-            <li className="nav-item"><a href="games.html" className="nav-link">Games</a></li>
-            <li className="nav-item"><a href="blog.html" className="nav-link">Blog</a></li>
-            <li className="nav-item"><a href="contact.html" className="nav-link">Contact</a></li>
-            <li className="nav-item active"><a href="#" className="nav-link">Play</a></li>
-
+            <li className="nav-item active">
+              <a href="index.html" className="nav-link">
+                Home
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="about.html" className="nav-link">
+                About
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="games.html" className="nav-link">
+                Games
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="blog.html" className="nav-link">
+                Blog
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link">
+                Contact
+              </a>
+            </li>
+            <li className="nav-item cta">
+              <a
+                style={{ cursor: 'pointer' }}
+                onClick={() => props.openLoginDialog()}
+                className="nav-link"
+              >
+                Play
+              </a>
+            </li>
           </ul>
         </div>
       </div>
+      <LoginDialog
+        open={props.loginDialogState.open}
+        onClose={() => props.closeLoginDialog()}
+      />
     </nav>
   );
 };
 
-export default Header;
+const mapStateToProps = state => ({ loginDialogState: state.loginReducer });
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ openLoginDialog, closeLoginDialog }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

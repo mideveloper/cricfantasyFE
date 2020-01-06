@@ -1,5 +1,5 @@
-import React from "react";
-import images from "../../styles/styles";
+import React from 'react';
+import images from '../../styles/styles';
 
 const Leaderboard = () => {
   return (
