@@ -7,7 +7,7 @@ const GameSchedule = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <div className="heading-section ftco-animate">
+            <div className="heading-section ftco-animate fadeInUp ftco-animated">
               <span className="subheading">Upcoming Games</span>
               <h2 className="mb-4">Game Scheduel</h2>
             </div>

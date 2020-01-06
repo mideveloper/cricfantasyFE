@@ -6,11 +6,11 @@ const Leaderboard = () => {
     <section className="ftco-section mt-5 pb-0 leaderboard">
       <div className="container">
         <div className="row">
-          <div className="heading-section ftco-animate">
+          <div className="heading-section ftco-animate fadeInUp ftco-animated">
             <span className="subheading">Top Teams</span>
             <h2 className="mb-4">Leaderboard</h2>
           </div>
-          <div className="" style={{width: '100%'}}>
+          <div className="" style={{ width: '100%' }}>
             <table className="table table-league">
               <thead>
                 <tr>
@@ -92,6 +92,20 @@ const Leaderboard = () => {
           <div className="col-md-12">
             <div className="align-center">
               <p><a href="#" className="btn btn-link shadow-none">View All</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="quickScore active">
+        <div className="exclamation">i</div>
+        <div className="d-sm-flex mb-1">
+          <div className="sport-team d-flex align-items-center justify-content-center">
+            <div>
+              <div className="img logo m-auto" style={images.person1}>
+              </div>
+              <div className="text-center d-flex px-0 px-md-0">
+                <h4 className="team-name">Knight Warrior</h4>
+              </div>
             </div>
           </div>
         </div>
