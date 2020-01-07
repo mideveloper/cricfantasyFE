@@ -9,19 +9,23 @@ import './assets/scss/main.css';
 
 import { Provider } from 'react-redux';
 import store from './store';
+import httpService from './utils/httpService';
 
-const App = () => (
-  <Provider store={store}>
-    <div className="App">
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/register" component={Register} />
-        <Route path="/login" component={Login} />
-        <Route path="/test" component={Test} />
-        <Route component={() => <div>Sorry, No Page Found</div>} />
-      </Switch>
-    </div>
-  </Provider>
-);
+const App = () => {
+  httpService.init();
+  return (
+    <Provider store={store}>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+          <Route path="/test" component={Test} />
+          <Route component={() => <div>Sorry, No Page Found</div>} />
+        </Switch>
+      </div>
+    </Provider>
+  );
+};
 
 export default App;
