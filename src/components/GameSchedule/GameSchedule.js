@@ -16,11 +16,13 @@ const GameSchedule = () => {
   };
 
   const [matchSchedule, setMatchSchedule] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function getAllMatches() {
+      setIsLoading(true);
       const res = await httpService.get('match/schedule/2');
-      console.log(res);
+      setIsLoading(false);
       setMatchSchedule(res.data.data);
     }
     getAllMatches();
@@ -41,6 +43,7 @@ const GameSchedule = () => {
       <div className="container">
         <CustomSlider settings={settings}>
           {matchSchedule &&
+            !isLoading &&
             matchSchedule.map(schedule => (
               <div className="container">
                 <div className="row">
@@ -89,7 +92,12 @@ const GameSchedule = () => {
             ))}
         </CustomSlider>
       </div>
-      {!matchSchedule && (
+      {!matchSchedule && isLoading && (
+        <div className="text-center">
+          <h1>Loading...</h1>
+        </div>
+      )}
+      {!matchSchedule && !isLoading && (
         <div className="text-center">
           <h1>No Matches Available</h1>
         </div>
