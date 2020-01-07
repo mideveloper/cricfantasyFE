@@ -44,7 +44,7 @@ const GameSchedule = () => {
 
   useEffect(() => {
     async function getAllMatches() {
-      const res = await httpService.get('matches/schedule/2');
+      const res = await httpService.get('match/schedule/2');
       console.log(res);
       setMatchSchedule(res.data.data);
     }
