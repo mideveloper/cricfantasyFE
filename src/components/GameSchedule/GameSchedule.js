@@ -1,32 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Slider from 'react-slick';
-import images from '../../styles/styles';
+import CustomSlider from '../common/CustomSlider/index';
 import httpService from '../../utils/httpService';
 import utilService from '../../utils/utilService';
 
 const GameSchedule = () => {
-  function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: 'block', background: 'darkgray' }}
-        onClick={onClick}
-      />
-    );
-  }
-
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: 'block', background: 'darkgray' }}
-        onClick={onClick}
-      />
-    );
-  }
-
   const settings = {
     dots: true,
     infinite: true,
@@ -36,8 +13,6 @@ const GameSchedule = () => {
     speed: 3000,
     autoplaySpeed: 4000,
     cssEase: 'linear',
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
   };
 
   const [matchSchedule, setMatchSchedule] = useState('');
@@ -64,7 +39,7 @@ const GameSchedule = () => {
         </div>
       </div>
       <div className="container">
-        <Slider {...settings}>
+        <CustomSlider settings={settings}>
           {matchSchedule &&
             matchSchedule.map(schedule => (
               <div className="container">
@@ -112,7 +87,7 @@ const GameSchedule = () => {
                 </div>
               </div>
             ))}
-        </Slider>
+        </CustomSlider>
       </div>
       {!matchSchedule && (
         <div className="text-center">
