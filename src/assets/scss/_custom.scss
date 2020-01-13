@@ -170,19 +170,51 @@ body {
     /*---- Game Report End -------*/
     /*---- Game Report Start -------*/
     .quickScore {
-      position: absolute;
+      position: fixed;
       width: 70px;
       height: 70px;
       background: $white;
-      top: 17%;
-      right: 20%;
+      top: 20%;
+      right: 1%;
       border: 1px solid $lightgray;
+      text-align: center;
       cursor: pointer;
       @include border-radius(50%);
       box-shadow: 0px 15px 24px 0 rgba($darken, 0.11);
+      .sport-team {
+        display: none;
+      }
+      h4,
+      h3 {
+        color: $primary;
+        text-align: center;
+        display: block;
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: 900;
+      }
+      h3 {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 1;
+      }
+      span {
+        color: $silverchalice;
+        font-size: 16px;
+      }
+      .separator {
+        border-right: 1px solid $white;
+        width: 1px;
+        display: block;
+        height: 44px;
+      }
       .exclamation {
         background-color: $darken;
         color: $white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
         width: 30px;
         height: 30px;
         text-align: center;
@@ -195,7 +227,8 @@ body {
       }
       &.active {
         width: 300px;
-        height: 240px;
+        height: 125px;
+        padding-top: 15px;
         background: $darken;
         border: 1px solid $darken;
         @include border-radius(10px);
@@ -203,11 +236,157 @@ body {
         .exclamation {
           background-color: $white;
           color: $darken;
-          margin: 12px 12px auto auto;
+          // margin: 12px 12px auto auto;
+          top: -7px;
+          right: -7px;
+        }
+        .sport-team {
+          display: block;
+          max-width: 70%;
         }
       }
     }
     /*---- Game Report End -------*/
+    /*---- SearchBar Start -------*/
+    .searchBar {
+      width: 524px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      padding: 0 25px;
+      font-weight: 600;
+      background-color: $darken;
+      @include border-radius(10px);
+      input {
+        width: 100%;
+        background-color: transparent;
+        border: 0;
+        color: $white;
+        text-transform: uppercase;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    /*---- SearchBar End -------*/
+    /*---- Team Filter Start -------*/
+    .team-filter {
+      .filter-drop {
+        box-shadow: 0px 15px 24px 0 rgba($darken, 0.11);
+        background-color: $white;
+        @include border-radius(8px);
+        padding: 30px;
+        h2 {
+          color: $primary;
+          font-size: 35px;
+          font-weight: 600;
+          margin-bottom: 0;
+          line-height: 48px;
+        }
+        h3 {
+          font-size: 28px;
+          color: $silverchalice;
+        }
+        select {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          -ms-appearance: none;
+          appearance: none;
+          outline: 0;
+          box-shadow: none;
+          border: 0 !important;
+          background: $white;
+          background-image: none;
+        }
+        /* Remove IE arrow */
+        select::-ms-expand {
+          display: none;
+        }
+        /* Custom Select */
+        .select {
+          position: relative;
+          display: flex;
+          width: 20em;
+          height: 3em;
+          line-height: 3;
+          background: $white;
+          overflow: hidden;
+          border-radius: 0.25em;
+        }
+        select {
+          flex: 1;
+          padding: 0 0em;
+          color: $primary;
+          cursor: pointer;
+          font-size: 35px;
+          font-weight: 600;
+          line-height: 1;
+          option {
+            font-size: 16px;
+            padding: 10px;
+          }
+        }
+        /* Arrow */
+        .select::after {
+          content: "\e313";
+          position: absolute;
+          top: 0;
+          right: 0;
+          padding: 0 1em;
+          background: $white;
+          cursor: pointer;
+          pointer-events: none;
+          -webkit-transition: 0.25s all ease;
+          -o-transition: 0.25s all ease;
+          transition: 0.25s all ease;
+        }
+        /* Transition */
+        .select:hover::after {
+          color: #f39c12;
+        }
+      }
+      .nav-tabs {
+        width: 100%;
+        border: none;
+        margin-bottom: 30px;
+        .nav-link {
+          padding: 0;
+          margin: 0.5rem 1rem;
+          font-size: 28px;
+          line-height: 1;
+          font-weight: 600;
+          color: $silverchalice;
+          border: none;
+          border-bottom: 2px solid transparent;
+          &.active,
+          &:hover {
+            color: $darken;
+            border-color: $darken;
+            border: none;
+            border-bottom: 2px solid $darken;
+          }
+          &:focus {
+            border-color: transparent;
+          }
+        }
+      }
+      .tab-content {
+        width: 100%;
+      }
+      .player-detail-tab {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 24px;
+        color: $darken;
+        font-weight: 700;
+        display: flex;
+        box-shadow: 0px 5px 8px 0 rgba($darken, 0.06);
+        border: solid 1px $lightgray;
+        background-color: $white;
+        @include border-radius(30px);
+      }
+    }
+    /*---- Team Filter End -------*/
   }
   .align-left {
     text-align: left;
@@ -218,4 +397,9 @@ body {
   .align-right {
     text-align: right;
   }
+}
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

@@ -10400,6 +10400,10 @@ body.cricDesign {
   /*---- Game Report End -------*/
   /*---- Game Report Start -------*/
   /*---- Game Report End -------*/
+  /*---- SearchBar Start -------*/
+  /*---- SearchBar End -------*/
+  /*---- Team Filter Start -------*/
+  /*---- Team Filter End -------*/
 }
 
 body.cricDesign .ftco-navbar-light .container:before {
@@ -10577,22 +10581,59 @@ body.cricDesign .scoreboard.game-report .date p {
 }
 
 body.cricDesign .quickScore {
-  position: absolute;
+  position: fixed;
   width: 70px;
   height: 70px;
   background: #fff;
-  top: 17%;
-  right: 20%;
+  top: 20%;
+  right: 1%;
   border: 1px solid #ebebeb;
+  text-align: center;
   cursor: pointer;
   border-radius: 50%;
   -webkit-box-shadow: 0px 15px 24px 0 rgba(35, 41, 49, 0.11);
           box-shadow: 0px 15px 24px 0 rgba(35, 41, 49, 0.11);
 }
 
+body.cricDesign .quickScore .sport-team {
+  display: none;
+}
+
+body.cricDesign .quickScore h4,
+body.cricDesign .quickScore h3 {
+  color: #ffb400;
+  text-align: center;
+  display: block;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+body.cricDesign .quickScore h3 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1;
+}
+
+body.cricDesign .quickScore span {
+  color: #aaaaaa;
+  font-size: 16px;
+}
+
+body.cricDesign .quickScore .separator {
+  border-right: 1px solid #fff;
+  width: 1px;
+  display: block;
+  height: 44px;
+}
+
 body.cricDesign .quickScore .exclamation {
   background-color: #232931;
   color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 30px;
   height: 30px;
   text-align: center;
@@ -10606,7 +10647,8 @@ body.cricDesign .quickScore .exclamation {
 
 body.cricDesign .quickScore.active {
   width: 300px;
-  height: 240px;
+  height: 125px;
+  padding-top: 15px;
   background: #232931;
   border: 1px solid #232931;
   border-radius: 10px;
@@ -10617,7 +10659,177 @@ body.cricDesign .quickScore.active {
 body.cricDesign .quickScore.active .exclamation {
   background-color: #fff;
   color: #232931;
-  margin: 12px 12px auto auto;
+  top: -7px;
+  right: -7px;
+}
+
+body.cricDesign .quickScore.active .sport-team {
+  display: block;
+  max-width: 70%;
+}
+
+body.cricDesign .searchBar {
+  width: 524px;
+  height: 44px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 25px;
+  font-weight: 600;
+  background-color: #232931;
+  border-radius: 10px;
+}
+
+body.cricDesign .searchBar input {
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+body.cricDesign .searchBar input:focus {
+  outline: none;
+}
+
+body.cricDesign .team-filter .filter-drop {
+  -webkit-box-shadow: 0px 15px 24px 0 rgba(35, 41, 49, 0.11);
+          box-shadow: 0px 15px 24px 0 rgba(35, 41, 49, 0.11);
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  /* Remove IE arrow */
+  /* Custom Select */
+  /* Arrow */
+  /* Transition */
+}
+
+body.cricDesign .team-filter .filter-drop h2 {
+  color: #ffb400;
+  font-size: 35px;
+  font-weight: 600;
+  margin-bottom: 0;
+  line-height: 48px;
+}
+
+body.cricDesign .team-filter .filter-drop h3 {
+  font-size: 28px;
+  color: #aaaaaa;
+}
+
+body.cricDesign .team-filter .filter-drop select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 0 !important;
+  background: #fff;
+  background-image: none;
+}
+
+body.cricDesign .team-filter .filter-drop select::-ms-expand {
+  display: none;
+}
+
+body.cricDesign .team-filter .filter-drop .select {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  line-height: 3;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 0.25em;
+}
+
+body.cricDesign .team-filter .filter-drop select {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 0 0em;
+  color: #ffb400;
+  cursor: pointer;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+body.cricDesign .team-filter .filter-drop select option {
+  font-size: 16px;
+  padding: 10px;
+}
+
+body.cricDesign .team-filter .filter-drop .select::after {
+  content: "\e313";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #fff;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: 0.25s all ease;
+  transition: 0.25s all ease;
+}
+
+body.cricDesign .team-filter .filter-drop .select:hover::after {
+  color: #f39c12;
+}
+
+body.cricDesign .team-filter .nav-tabs {
+  width: 100%;
+  border: none;
+  margin-bottom: 30px;
+}
+
+body.cricDesign .team-filter .nav-tabs .nav-link {
+  padding: 0;
+  margin: 0.5rem 1rem;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 600;
+  color: #aaaaaa;
+  border: none;
+  border-bottom: 2px solid transparent;
+}
+
+body.cricDesign .team-filter .nav-tabs .nav-link.active, body.cricDesign .team-filter .nav-tabs .nav-link:hover {
+  color: #232931;
+  border-color: #232931;
+  border: none;
+  border-bottom: 2px solid #232931;
+}
+
+body.cricDesign .team-filter .nav-tabs .nav-link:focus {
+  border-color: transparent;
+}
+
+body.cricDesign .team-filter .tab-content {
+  width: 100%;
+}
+
+body.cricDesign .team-filter .player-detail-tab {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 24px;
+  color: #232931;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 0px 5px 8px 0 rgba(35, 41, 49, 0.06);
+          box-shadow: 0px 5px 8px 0 rgba(35, 41, 49, 0.06);
+  border: solid 1px #ebebeb;
+  background-color: #fff;
+  border-radius: 30px;
 }
 
 body .align-left {
@@ -10630,6 +10842,12 @@ body .align-center {
 
 body .align-right {
   text-align: right;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 body {

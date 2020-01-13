@@ -10,6 +10,7 @@ import './assets/scss/main.css';
 import { Provider } from 'react-redux';
 import store from './store';
 import httpService from './utils/httpService';
+import CreateTeam from './components/CreateTeam/CreateTeam';
 
 const App = () => {
   httpService.init();
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/test" component={Test} />
+          <Route path="/create-team" component={CreateTeam} />
           <Route component={() => <div>Sorry, No Page Found</div>} />
         </Switch>
       </div>

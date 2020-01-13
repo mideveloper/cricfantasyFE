@@ -17,14 +17,14 @@ const GameSchedule = () => {
 
   const [matchSchedule, setMatchSchedule] = useState('');
 
-  useEffect(() => {
-    async function getAllMatches() {
-      const res = await httpService.get('match/schedule/2');
-      console.log(res);
-      setMatchSchedule(res.data.data);
-    }
-    getAllMatches();
-  }, []);
+  // useEffect(() => {
+  //   async function getAllMatches() {
+  //     const res = await httpService.get('match/schedule/2');
+  //     console.log(res);
+  //     setMatchSchedule(res.data.data);
+  //   }
+  //   getAllMatches();
+  // }, []);
 
   return (
     <section className="ftco-section">
