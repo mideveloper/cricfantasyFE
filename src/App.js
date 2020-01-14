@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from './containers/Home';
 import Register from './containers/Register';
 import Login from './containers/Login';
+import CreateTeam from './containers/CreateTeam';
 import Test from './containers/TestComponent';
 // import "./App.css";
 import './assets/scss/main.css';
@@ -10,7 +11,6 @@ import './assets/scss/main.css';
 import { Provider } from 'react-redux';
 import store from './store';
 import httpService from './utils/httpService';
-import CreateTeam from './components/CreateTeam/CreateTeam';
 
 const App = () => {
   httpService.init();
