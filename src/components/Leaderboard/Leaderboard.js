@@ -15,7 +15,7 @@ const Leaderboard = () => {
               <div>
                 <form className="searchBar">
                   <input type="text" placeholder="Search by team name"></input>
-                  <button></button>
+                  <button><i className="icon-search1"></i></button>
                 </form>
               </div>
             </div>
