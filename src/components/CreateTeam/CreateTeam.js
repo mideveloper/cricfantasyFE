@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import PlayersListing from './PlayersListing';
+import PlayerFormation from './PlayerFormation';
 import CreateTeamHeader from './CreateTeamHeader';
-import { initState, initialBudget } from './constant';
+import { initState } from './constant';
 import { getPlayers, getFormations, getTeams } from '../../utils/apiService';
 
 const CreateTeam = () => {
   const [players, setPlayers] = useState(initState.players);
   const [formations, setFormations] = useState(initState.formations);
   const [teams, setTeams] = useState(initState.teams);
+  const [budget, setBudget] = useState(initState.budget);
 
   const changeTeamHandler = async event => {
-    const playersList = await getPlayers({ id: event.target.value });
+    const id = event.target.value;
+    const playersList = await getPlayers({ id });
     setPlayers(playersList);
   };
 
@@ -24,19 +27,21 @@ const CreateTeam = () => {
       setPlayers(playerList);
       setFormations(formationsList);
       setTeams(teamsList);
+      setBudget(150);
     })();
   }, []);
 
   return (
     <section className="ftco-section mt-5 pb-0 team-filter">
-      <div className="container">
+      <div className="container pb-5 mb-5">
         <CreateTeamHeader
-          remainingBudget={initialBudget}
+          budget={budget}
           formations={formations}
           teams={teams}
           changeTeam={changeTeamHandler}
         ></CreateTeamHeader>
         <PlayersListing playerList={players}></PlayersListing>
+        <PlayerFormation></PlayerFormation>
       </div>
     </section>
   );

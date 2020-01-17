@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlayersTypes, tabList, initState } from './constant';
+import { PlayersTypes, tabList, initState, tabListToClassMap as classMap, tabListToClassMap } from './constant';
 import PropTypes from 'prop-types';
 
 const PlayersListing = ({ playerList }) => {
@@ -11,17 +11,17 @@ const PlayersListing = ({ playerList }) => {
     [PlayersTypes.ALL_ROUNDER]: allRounders,
   };
   return (
-    <div className="row mt-5">
+    <div className="row mt-5 pt-4">
       <ul className="nav nav-tabs" id="myTab" role="tablist">
         {tabList.map((tabItem, index) => (
           <li key={index} className="nav-item">
             <a
               className={index === 0 ? 'nav-link active' : 'nav-link'}
-              id={`${tabItem}-tab`}
+              id={`${classMap[tabItem]}-tab`}
               data-toggle="tab"
-              href={`#${tabItem}`}
+              href={`#${classMap[tabItem]}`}
               role="tab"
-              aria-controls={tabItem}
+              aria-controls={classMap[tabItem]}
               aria-selected={index === 0 ? 'true' : 'false'}
             >
               {tabItem}
@@ -34,18 +34,20 @@ const PlayersListing = ({ playerList }) => {
           <div
             className={index === 0 ? 'tab-pane fade show active' : 'tab-pane fade'}
             key={index}
-            id={tabItem}
+            id={classMap[tabItem]}
             role="tabpanel"
-            aria-labelledby={`${tabItem}-tab`}
+            aria-labelledby={`${classMap[tabItem]}-tab`}
           >
             <div className="row">
-              <div className="col-lg-4">
                 {tabListToPlayersMap[tabItem].map(player => (
+                  <div key={player.id} className="col-lg-4">
                   <div key={player.id} className="player-detail-tab">
-                    {player.name}
+                      <div className="d-flex align-items-center">
+                        <i className={`icon-${classMap[tabItem]}`}></i> {player.name}</div> 
+                      <div><span className="cr">{player.price} CR</span></div>
+                  </div>
                   </div>
                 ))}
-              </div>
               <div className="col-lg-4"></div>
               <div className="col-lg-4"></div>
             </div>
@@ -57,7 +59,7 @@ const PlayersListing = ({ playerList }) => {
 };
 
 PlayersListing.propTypes = {
-  playerList: PropTypes.array.isRequired,
+  playerList: PropTypes.object.isRequired,
 };
 
 PlayersListing.defaultProps = {

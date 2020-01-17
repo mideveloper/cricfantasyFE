@@ -6,6 +6,7 @@ export const login = payload => {
 };
 
 export const getPlayers = payload => {
+  console.log(payload)
   const players = [];
   for (let i = 0; i < 10; i++) {
     players.push({
@@ -13,6 +14,7 @@ export const getPlayers = payload => {
       name: `Player ${i}`,
       type: 'Batsman',
       team: 'Karachi King',
+      price: 10,
     });
   }
   const bowlers = [];
@@ -20,6 +22,7 @@ export const getPlayers = payload => {
     bowlers.push({
       id: i,
       name: `Player ${i}`,
+      price: 10,
       type: 'Bowlers',
       team: 'Peshawar Zalmi',
     });
@@ -45,13 +48,17 @@ export const getFormations = payload => {
 };
 
 export const getTeams = payload => {
-  const teams = [
-    { id: 1, name: 'Karachi King' },
-    { id: 2, name: 'Multan Sultan' },
-    { id: 3, name: 'Islamabad United' },
-    { id: 4, name: 'Peshawar Zalmi' },
-    { id: 5, name: 'Lahore Qalandar' },
-    { id: 6, name: 'Quetta Gladiator' },
-  ];
-  return Promise.resolve(teams);
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const teams = [
+        { id: 1, name: 'Karachi King' },
+        { id: 2, name: 'Multan Sultan' },
+        { id: 3, name: 'Islamabad United' },
+        { id: 4, name: 'Peshawar Zalmi' },
+        { id: 5, name: 'Lahore Qalandar' },
+        { id: 6, name: 'Quetta Gladiator' },
+      ];
+      return resolve(teams);
+    },5000)
+  })
 };

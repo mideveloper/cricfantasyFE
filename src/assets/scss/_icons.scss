@@ -2,9 +2,9 @@ $icomoon-font-family: "cricket" !default;
 $icomoon-font-path: "../fonts" !default;
 
 $icon-search1: "\e900";
-$icon-allrounder: "\e902";
+$icon-rounder: "\e902";
 $icon-close: "\e901";
-$icon-ball: "\e904";
+$icon-bowler: "\e904";
 $icon-batsman: "\e909";
 $icon-keeper: "\e90a";
 $icon-ok: "\e903";
@@ -46,9 +46,9 @@ $icon-signout: "\ea14";
     content: $icon-search1;
   }
 }
-.icon-allrounder {
+.icon-rounder {
   &:before {
-    content: $icon-allrounder;
+    content: $icon-rounder;
   }
 }
 .icon-close {
@@ -56,9 +56,9 @@ $icon-signout: "\ea14";
     content: $icon-close;
   }
 }
-.icon-ball {
+.icon-bowler {
   &:before {
-    content: $icon-ball;
+    content: $icon-bowler;
   }
 }
 .icon-ok {

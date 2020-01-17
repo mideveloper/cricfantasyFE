@@ -10412,7 +10412,7 @@ a.text-dark:hover, a.text-dark:focus {
   content: "";
 }
 
-.icon-allrounder:before {
+.icon-rounder:before {
   content: "";
 }
 
@@ -10420,7 +10420,7 @@ a.text-dark:hover, a.text-dark:focus {
   content: "";
 }
 
-.icon-ball:before {
+.icon-bowler:before {
   content: "";
 }
 
@@ -10996,11 +10996,12 @@ body.cricDesign .team-filter .player-formation {
 
 body.cricDesign .team-filter .player-formation .keeper {
   background: url(../images/player/keeper.svg);
+  background-repeat: no-repeat;
   -webkit-filter: sepia(100%) grayscale(100%);
           filter: sepia(100%) grayscale(100%);
-  width: 91px;
-  height: 101px;
-  margin-top: -40px;
+  width: 90px;
+  height: 90px;
+  margin-top: -30px;
   -webkit-transform: rotate3d(0, 1, 0, 160deg);
           transform: rotate3d(0, 1, 0, 160deg);
 }
@@ -11012,16 +11013,10 @@ body.cricDesign .team-filter .player-formation .batsman {
   width: 64px;
   height: 129px;
   margin: 0 40px;
-  margin-top: -30px;
+  margin-top: -40px;
   background-repeat: no-repeat;
   position: relative;
   z-index: 1;
-}
-
-body.cricDesign .team-filter .player-formation .batsman:nth-child(3n + 3) {
-  width: 84px;
-  height: 149px;
-  margin-top: -90px;
 }
 
 body.cricDesign .team-filter .player-formation .bowler {
@@ -11031,14 +11026,10 @@ body.cricDesign .team-filter .player-formation .bowler {
   width: 64px;
   height: 129px;
   margin: 0 40px;
-  margin-top: -30px;
+  margin-top: -40px;
   background-repeat: no-repeat;
-}
-
-body.cricDesign .team-filter .player-formation .bowler:nth-child(3n + 3) {
-  width: 64px;
-  height: 159px;
-  margin-top: 0px;
+  position: relative;
+  z-index: 1;
 }
 
 body.cricDesign .team-filter .player-formation .allrounder {
@@ -11048,14 +11039,8 @@ body.cricDesign .team-filter .player-formation .allrounder {
   width: 54px;
   height: 119px;
   margin: 0 40px;
-  margin-top: -10px;
+  margin-top: -40px;
   background-repeat: no-repeat;
-}
-
-body.cricDesign .team-filter .player-formation .allrounder:nth-child(3n + 3) {
-  width: 64px;
-  height: 139px;
-  margin-top: 20px;
 }
 
 body.cricDesign .team-filter .player-formation .batsman.active,

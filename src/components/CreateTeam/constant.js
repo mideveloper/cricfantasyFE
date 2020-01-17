@@ -7,7 +7,8 @@ export const initState = {
   },
   formations: [],
   teams: [],
-}
+  budget: 0,
+};
 
 export const PlayersTypes = Object.freeze({
   BATSMAN: 'Batsman',
@@ -23,4 +24,9 @@ export const tabList = [
   PlayersTypes.ALL_ROUNDER,
 ];
 
-export const initialBudget = 150;
+export const tabListToClassMap = {
+  [PlayersTypes.BATSMAN]: 'batsman',
+  [PlayersTypes.BOWLER]: 'bowler',
+  [PlayersTypes.KEEPER]: 'keeper',
+  [PlayersTypes.ALL_ROUNDER]: 'rounder',
+};
