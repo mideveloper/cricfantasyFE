@@ -439,10 +439,11 @@ body {
         align-items: center;
         .keeper {
           background: url(../images/player/keeper.svg);
+          background-repeat: no-repeat;
           filter: sepia(100%) grayscale(100%);
-          width: 91px;
-          height: 101px;
-          margin-top: -40px;
+          width: 90px;
+          height: 90px;
+          margin-top: -30px;
           transform: rotate3d(0, 1, 0, 160deg);
         }
         .batsman {
@@ -451,15 +452,11 @@ body {
           width: 64px;
           height: 129px;
           margin: 0 40px;
-          margin-top: -30px;
+          margin-top: -40px;
           background-repeat: no-repeat;
           position: relative;
           z-index: 1;
-          &:nth-child(3n + 3) {
-            width: 84px;
-            height: 149px;
-            margin-top: -90px;
-          }
+          
         }
         .bowler {
           background: url(../images/player/bowler.svg);
@@ -467,13 +464,10 @@ body {
           width: 64px;
           height: 129px;
           margin: 0 40px;
-          margin-top: -30px;
+          margin-top: -40px;
           background-repeat: no-repeat;
-          &:nth-child(3n + 3) {
-            width: 64px;
-            height: 159px;
-            margin-top: 0px;
-          }
+          position: relative;
+          z-index: 1;
         }
         .allrounder {
           background: url(../images/player/all-rounder.svg);
@@ -481,13 +475,9 @@ body {
           width: 54px;
           height: 119px;
           margin: 0 40px;
-          margin-top: -10px;
+          margin-top: -40px;
           background-repeat: no-repeat;
-          &:nth-child(3n + 3) {
-            width: 64px;
-            height: 139px;
-            margin-top: 20px;
-          }
+         
         }
         .batsman,
         .bowler,

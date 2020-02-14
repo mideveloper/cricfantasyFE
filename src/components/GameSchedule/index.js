@@ -1,3 +1,3 @@
-import GameSchedule from "./GameSchedule";
+import GameSchedule from './GameSchedule';
 
 export default GameSchedule;
