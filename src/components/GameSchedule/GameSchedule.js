@@ -17,14 +17,14 @@ const GameSchedule = () => {
 
   const [matchSchedule, setMatchSchedule] = useState('');
 
-  // useEffect(() => {
-  //   async function getAllMatches() {
-  //     const res = await httpService.get('match/schedule/2');
-  //     console.log(res);
-  //     setMatchSchedule(res.data.data);
-  //   }
-  //   getAllMatches();
-  // }, []);
+  useEffect(() => {
+    async function getAllMatches() {
+      const res = await httpService.get('match/schedule/2');
+      console.log(res);
+      setMatchSchedule(res.data.data);
+    }
+    getAllMatches();
+  }, []);
 
   return (
     <section className="ftco-section">
@@ -42,7 +42,7 @@ const GameSchedule = () => {
         <CustomSlider settings={settings}>
           {matchSchedule &&
             matchSchedule.map(schedule => (
-              <div className="container">
+              <div className="container" key={schedule.id}>
                 <div className="row">
                   <div className="col-lg-12 mb-4" key={schedule.id}>
                     <div className="scoreboard mb-5 mb-lg-0 game-report">
@@ -53,9 +53,8 @@ const GameSchedule = () => {
                         <div className="sport-team d-flex align-items-center justify-content-center">
                           <div>
                             <div className="text-center">
-                              <h1>{schedule.team_1.charAt(0)}</h1>
+                              <h1>{utilService.getTeamInitails(schedule.team_1)}</h1>
                             </div>
-                            {/* <div className="img logo m-auto" style={images.person1}></div> */}
                             <div className="text-center d-flex px-0 px-md-0 ">
                               <h4 className="team-name">{schedule.team_1}</h4>
                             </div>
@@ -67,12 +66,8 @@ const GameSchedule = () => {
                         <div className="sport-team d-flex align-items-center justify-content-center">
                           <div>
                             <div className="text-center">
-                              <h1>{schedule.team_2.charAt(0).toUpperCase()}</h1>
+                              <h1>{utilService.getTeamInitails(schedule.team_2)}</h1>
                             </div>
-                            {/* <div
-                          className="img logo m-auto order-sm-last"
-                          style={images.person1}
-                        ></div> */}
                             <div className="text-center d-flex px-0 px-md-0 ">
                               <h4 className="team-name">{schedule.team_2}</h4>
                             </div>
