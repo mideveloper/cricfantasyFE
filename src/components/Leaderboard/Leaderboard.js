@@ -19,7 +19,7 @@ const Leaderboard = () => {
 
   return (
     <>
-      <section className="ftco-section mt-5 pb-0 leaderboard">
+      <section className="ftco-section pb-0 leaderboard">
         <div className="container">
           <div className="row no-gutters">
             <div className="col-lg-12 heading-section d-flex align-items-center justify-content-between ftco-animate fadeInUp ftco-animated">

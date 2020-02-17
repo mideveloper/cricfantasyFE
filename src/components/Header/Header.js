@@ -62,9 +62,16 @@ const Header = props => {
               </a>
             </li>
             {userDetails && (
-              <li className="nav-item cta">
-                Welcome: {userDetails.first_name}
-                <a onClick={() => logout()}>Logout</a>
+              <li className="nav-item profile-dropdown-wrapper d-flex justify-content-center align-items-center ml-3">
+                <img className="rounded-circle" src={userDetails.profile_picture} alt={userDetails.first_name} />
+                <div class="dropdown ml-2">
+                  <button class="dropdown-toggle border-0 font-weight-bold" type="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {userDetails.first_name}
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+                    <button class="dropdown-item" type="button" onClick={() => logout()}>Logout</button>
+                  </div>
+                </div>
               </li>
             )
             }

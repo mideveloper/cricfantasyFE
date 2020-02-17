@@ -118,6 +118,10 @@ const images = {
   home_cover: {
     backgroundImage: `url(${Image29})`,
     height: '590px'
+  },
+  home_cover_overlay: {
+    backgroundColor: `rgba(#000000, 0.5)`,
+    top: '0'
   }
 };
 

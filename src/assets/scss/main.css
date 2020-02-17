@@ -11296,6 +11296,20 @@ h1, h2, h3, h4, h5,
   outline: none !important;
 }
 
+.ftco-navbar-light .profile-dropdown-wrapper img {
+  width: 40px;
+}
+
+.ftco-navbar-light .profile-dropdown-wrapper button {
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.ftco-navbar-light .profile-dropdown-wrapper .dropdown-menu {
+  top: 38px;
+}
+
 .ftco-navbar-light.scrolled {
   position: fixed;
   right: 0;
@@ -11663,13 +11677,6 @@ h1, h2, h3, h4, h5,
   -webkit-box-shadow: 0px 75px 94px -66px rgba(0, 0, 0, 0.66);
   box-shadow: 0px 75px 94px -66px rgba(0, 0, 0, 0.66);
   border-radius: 5px;
-  margin-top: -60px;
-}
-
-@media (min-width: 576px) {
-  .game-wrap-1 {
-    margin-top: -60px;
-  }
 }
 
 .game-wrap-1 .text {
@@ -12128,6 +12135,10 @@ h1, h2, h3, h4, h5,
   }
 }
 
+.ftco-home-slide {
+  height: 590px !important;
+}
+
 .services {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -12340,7 +12351,7 @@ textarea.form-control {
   letter-spacing: .1em;
 }
 
-.ftco-footer .ftco-footer-widget h2 {
+.ftco-footer .ftco-footer-widget h3 {
   font-weight: normal;
   color: #fff;
   margin-bottom: 40px;
