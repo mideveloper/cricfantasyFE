@@ -26,6 +26,7 @@ import Image25 from "../assets/images/image_2.jpg";
 import Image26 from "../assets/images/image_3.jpg";
 import Image27 from "../assets/images/image_4.jpg";
 import Image28 from "../assets/images/about.jpg";
+import Image29 from "../assets/images/home-cover.jpg";
 
 const images = {
   bg1: {
@@ -113,6 +114,14 @@ const images = {
   },
   about: {
     backgroundImage: `url(${Image28})`
+  },
+  home_cover: {
+    backgroundImage: `url(${Image29})`,
+    height: '590px'
+  },
+  home_cover_overlay: {
+    backgroundColor: `rgba(#000000, 0.5)`,
+    top: '0'
   }
 };
 
