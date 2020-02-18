@@ -129,7 +129,6 @@ const CreateTeam = () => {
       }
 
       const response = await createLeagueTeam(payload);
-      console.log(response);
       window.location.href = '/';
       return;
     } catch (err) {

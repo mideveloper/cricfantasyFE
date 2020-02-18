@@ -1,5 +1,6 @@
 import httpService from './httpService';
 import { groupBy, forEach } from 'lodash';
+import { getLocalStorage } from './setStorage';
 
 export const login = payload => {
   // httpService.init();
@@ -96,7 +97,8 @@ export const getLeague = async (leagueId) => {
 
 export const createLeagueTeam = async (payload) => {
   try {
-    httpService.init(window.localStorage.getItem('access_token'));
+    var user = getLocalStorage('loggedInUser')
+    httpService.init(user.access_token);
     const leagueTeam = await httpService.post('league-team', payload);
     return leagueTeam;
   } catch (err) {
