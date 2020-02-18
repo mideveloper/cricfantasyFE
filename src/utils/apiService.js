@@ -82,6 +82,18 @@ export const getTeams = async () => {
   }
 };
 
+export const getLeague = async (leagueId) => {
+  try {
+    const { data } = await httpService.get(`leagues/${leagueId}`);
+    return data.data;
+  } catch (err) {
+    console.log(err);
+    return {
+      budget: 100
+    };
+  }
+};
+
 export const createLeagueTeam = async (payload) => {
   try {
     httpService.init(window.localStorage.getItem('access_token'));

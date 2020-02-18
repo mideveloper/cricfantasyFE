@@ -31,16 +31,6 @@ const generateFormation = (formationData) => {
   // console.log(['PlayerFormation.formations', formations]);
 };
 
-/*
-// default formations
-const formations = {
-  bowlers : ['bowler active', 'bowler', 'bowler active', 'bowler'],
-  batsman : ['batsman active', 'batsman','batsman', 'batsman', 'batsman'],
-  keepers : ['keeper active'],
-  allRounder : ['allrounder active','allrounder'],
-}
-*/
-
 const PlayerFormation = ({ formation }) => {
 
   if (formation && Object.keys(formation).length > 0) {

@@ -4,11 +4,11 @@ import PlayersListing from './PlayersListing';
 import PlayerFormation from './PlayerFormation';
 import CreateTeamHeader from './CreateTeamHeader';
 import { initState, formationPlayerTypes as fPlayerTypes, LeagueId } from './constant';
-import { getAllPlayers, getFormations, getTeams, createLeagueTeam } from '../../utils/apiService';
+import { getAllPlayers, getFormations, getTeams, createLeagueTeam, getLeague } from '../../utils/apiService';
 
 const CreateTeam = () => {
 
-  const totalBudget = 150;
+  let totalBudget = 100;
 
   let [budget, setBudget] = useState(initState.budget);
   let [players, setPlayers] = useState(initState.players);
@@ -98,8 +98,6 @@ const CreateTeam = () => {
       // console.log(['CreateTeam.selectPlayerHandler', { ...allPlayers[teamId] }, { ..._activeFormation }]);
       setPlayers({ ...allPlayers[teamId] });
       setActiveFormation({ ..._activeFormation });
-
-      // console.log(allPlayers);
     }
   };
 
@@ -143,11 +141,15 @@ const CreateTeam = () => {
   useEffect(() => {
     (async () => {
       // get data
-      const [playersList, formationsList, teamsList] = await Promise.all([
+      const [playersList, formationsList, teamsList, league] = await Promise.all([
         getSelectablePlayers(),
         getFormations(),
         getTeams(),
+        getLeague(LeagueId)
       ]);
+
+      totalBudget = league.budget;
+
       // set state
       setAllPlayers(playersList);
       setFormations(formationsList);
