@@ -12,18 +12,17 @@ import { Provider } from 'react-redux';
 import store from './store';
 import httpService from './utils/httpService';
 
-function PrivateRoute({ children, ...rest }) {
-  const isUserLoggedIn = window.localStorage.user_id;
+function PrivateRoute({ children }) {
+  const isUserLoggedIn = window.localStorage.loggedInUser;
   return (
     <Route
-      {...rest}
       render={({ location }) =>
         isUserLoggedIn ? (
           children
         ) : (
           <Redirect
             to={{
-              pathname: '/login',
+              pathname: '/',
               state: { from: location }
             }}
           />
@@ -42,7 +41,11 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
           <Route path="/login" component={Login} />
-          <PrivateRoute path="/create-team" component={CreateTeam} />
+          <Route path="/create-team">
+            <PrivateRoute>
+              <CreateTeam />
+            </PrivateRoute>
+          </Route>
           <Route component={() => <div>Sorry, No Page Found</div>} />
         </Switch>
       </div>
