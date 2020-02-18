@@ -9,7 +9,9 @@ const Leaderboard = () => {
     async function getLeaderBoard() {
       setLeaderBoard([]);
       const res = await httpService.get('leagues/2/leaderboard');
-      setLeaderBoard(res.data.data);
+      if (res && res.data && res.data.data) {
+        setLeaderBoard(res.data.data);
+      }
     }
     getLeaderBoard();
   }, []);

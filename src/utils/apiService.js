@@ -88,7 +88,6 @@ export const getLeague = async (leagueId) => {
     const { data } = await httpService.get(`leagues/${leagueId}`);
     return data.data;
   } catch (err) {
-    console.log(err);
     return {
       budget: 100
     };
@@ -102,7 +101,6 @@ export const createLeagueTeam = async (payload) => {
     const leagueTeam = await httpService.post('league-team', payload);
     return leagueTeam;
   } catch (err) {
-    console.log(err);
     throw new Error('Unable to create Team');
   }
 };

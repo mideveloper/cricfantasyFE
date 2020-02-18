@@ -41,7 +41,7 @@ const CreateTeamHeader = ({ budget, formations, teams, changeTeam, changeFormati
       </div>
       <div className="col-lg-4">
         <div className="filter-drop">
-          <h3>Total Budget</h3>
+          <h3>Total Point</h3>
           <h2>{budget}</h2>
         </div>
       </div>

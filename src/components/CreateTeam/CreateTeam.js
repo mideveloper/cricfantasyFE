@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { forEach } from 'lodash';
+import { toast } from 'react-toastify';
+import { confirmAlert } from 'react-confirm-alert';
 import PlayersListing from './PlayersListing';
 import PlayerFormation from './PlayerFormation';
 import CreateTeamHeader from './CreateTeamHeader';
@@ -38,7 +40,6 @@ const CreateTeam = () => {
         });
       });
     });
-    // console.log(['CreateTeam.getSelectablePlayers', playersList]);
     return playersList;
   }
 
@@ -49,9 +50,32 @@ const CreateTeam = () => {
   };
 
   const changeFormationHandler = async (event) => {
-    // TODO: should ask user first before changing select
-    window.alert('You are about to reset everything back by changing Formation');
-    const formation = formations.find(formation => formation.id === parseInt(event.target.value));
+    const fid = event.target.value;
+    if (activeFormation) {
+      const options = {
+        title: 'Are you sure?',
+        message: 'You want to change formation? Selected players will be lost.',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => {
+              changeFormation(fid);
+            }
+          },
+          {
+            label: 'No',
+            onClick: () => { }
+          }
+        ]
+      };
+      confirmAlert(options);
+    } else {
+      changeFormation(event.target.value);
+    }
+  };
+
+  const changeFormation = async (fId) => {
+    const formation = formations.find(formation => formation.id === parseInt(fId));
     if (formation) {
       const _activeFormation = { ...initState.activeFormation };
       forEach(_activeFormation, (data, type) => {
@@ -72,7 +96,7 @@ const CreateTeam = () => {
       setBudget(totalBudget);
       setSelectTeamValue('');
     }
-  };
+  }
 
   const selectPlayerHandler = (player, _index) => {
     if (budget <= totalBudget && budget > -1) {
@@ -91,13 +115,16 @@ const CreateTeam = () => {
         selectedPlayer.selected = true;
         ++_activeFormation[type].current;
         setBudget(budget - Number(player.price));
+      } else {
+        toast.error("You can not select " + type + " more than " + _activeFormation[type].total);
       }
 
       allPlayers[teamId][type][_index] = { ...selectedPlayer };
 
-      // console.log(['CreateTeam.selectPlayerHandler', { ...allPlayers[teamId] }, { ..._activeFormation }]);
       setPlayers({ ...allPlayers[teamId] });
       setActiveFormation({ ..._activeFormation });
+    } else {
+      toast.error("Your points exceeds.");
     }
   };
 
@@ -116,24 +143,43 @@ const CreateTeam = () => {
           );
         });
       });
-
-      const payload = {
-        name: teamName || null,
-        league_id: LeagueId || null,
-        formation_id: activeFormation.id || null,
-        players: playerIds
+      if (!teamName) {
+        toast.error("Team name required.");
+      } else if (!activeFormation || !activeFormation.id) {
+        toast.error("Please select formation.");
+      } else if (!playerIds || playerIds.length < 11) {
+        toast.error("Please can not be less than 11.");
+      } else if (playerIds.length > 11) {
+        toast.error("Please can not be greater than 11.");
+      } else {
+        const payload = {
+          name: teamName || null,
+          league_id: LeagueId || null,
+          formation_id: activeFormation.id || null,
+          players: playerIds
+        }
+        const options = {
+          title: 'Are you sure?',
+          message: 'You want to save this team.',
+          buttons: [
+            {
+              label: 'Yes',
+              onClick: async () => {
+                const response = await createLeagueTeam(payload);
+                window.location.href = '/';
+              }
+            },
+            {
+              label: 'No',
+              onClick: () => { }
+            }
+          ]
+        };
+        confirmAlert(options);
+        return;
       }
-
-      if (!payload.name && !payload.league_id && !payload.formationId && payload.players.length < 1) {
-        throw new Error('Validation Error');
-      }
-
-      const response = await createLeagueTeam(payload);
-      window.location.href = '/';
-      return;
     } catch (err) {
-      console.log(err);
-      window.alert('Unable to create team: ' + err.message);
+      toast.error("Error while team creation please try later.");
     }
   };
 
@@ -162,7 +208,7 @@ const CreateTeam = () => {
     <section className="ftco-section mt-5 pb-0 team-filter">
       <div className="container pb-5 mb-5">
         <div className="input-group mb-3">
-          <input type="text" className="form-control" value={teamName} onChange={_setTeamName} placeholder="Your team name" aria-describedby="basic-addon2"/>
+          <input type="text" className="form-control" value={teamName} onChange={_setTeamName} placeholder="Your team name" aria-describedby="basic-addon2" />
           <div className="input-group-append">
             <button onClick={createTeam} className="btn btn-primary navbar-toggler" type="button"> Create Team </button>
           </div>

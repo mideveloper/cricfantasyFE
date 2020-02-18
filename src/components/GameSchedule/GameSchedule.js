@@ -20,8 +20,9 @@ const GameSchedule = () => {
   useEffect(() => {
     async function getAllMatches() {
       const res = await httpService.get('match/schedule/2');
-      console.log(res);
-      setMatchSchedule(res.data.data);
+      if (res && res.data && res.data.data) {
+        setMatchSchedule(res.data.data);
+      }
     }
     getAllMatches();
   }, []);
