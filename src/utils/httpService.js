@@ -8,7 +8,7 @@ class httpService {
       'Content-Type': 'application/json;charset=UTF-8',
       'Access-Control-Allow-Origin': '*',
     };
-    if (token) headers.Authorization = `bearer ${token}`;
+    if (token) headers.Authorization = `${token}`;
     this.axiosInstance = axios.create({
       headers,
       baseURL: 'http://localhost:8000/v1/api/',
