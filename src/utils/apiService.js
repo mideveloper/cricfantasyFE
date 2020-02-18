@@ -1,64 +1,94 @@
 import httpService from './httpService';
+import { groupBy, forEach } from 'lodash';
 
 export const login = payload => {
   // httpService.init();
   return httpService.post('auth/login', payload);
 };
 
-export const getPlayers = payload => {
-  console.log(payload)
-  const players = [];
-  for (let i = 0; i < 10; i++) {
-    players.push({
-      id: i,
-      name: `Player ${i}`,
-      type: 'Batsman',
-      team: 'Karachi King',
-      price: 10,
-    });
-  }
-  const bowlers = [];
-  for (let i = 12; i < 20; i++) {
-    bowlers.push({
-      id: i,
-      name: `Player ${i}`,
-      price: 10,
-      type: 'Bowlers',
-      team: 'Peshawar Zalmi',
-    });
+export const getAllPlayers = async (payload) => {
+
+  const playerTypes = {
+    batsmen: [],
+    bowlers: [],
+    keepers: [],
+    allRounders: [],
+  };
+
+  if (!payload || typeof payload === undefined || Object.keys(payload).length < 1) {
+    return playerTypes;
   }
 
-  return Promise.resolve({
-    batsmen: players,
-    bowlers,
-    keepers: players,
-    allRounders: players,
+  const { teamId, leagueId } = payload;
+
+  const playerTypeEnum = {
+    '1': 'batsmen',
+    '2': 'bowlers',
+    '3': 'keepers',
+    '4': 'allRounders'
+  };
+
+  const queryString = {};
+  teamId && (queryString.teamId = teamId);
+
+  const allPlayers = await httpService.get(`leagues/${leagueId}/players`, queryString);
+
+  // { 1: [ players from team 1 ], 2: [ players from team 2 ], ... n: [ players from team n ] }
+  const teamPlayers = groupBy(allPlayers.data.data, 'team_id');
+
+  forEach(teamPlayers, (players, team) => {
+    players.forEach((player) => {
+      try {
+        playerTypes[playerTypeEnum[player.player_type]].push({
+          id: player.id,
+          player_id: player.player_id,
+          name: player.name,
+          type: playerTypeEnum[player.player_type],
+          typeId: player.player_type,
+          team: player.team_name,
+          teamId: player.team_id,
+          price: player.worth
+        });
+      } catch (err) {
+        return;
+      }
+    });
+    teamPlayers[team] = { ...playerTypes };
+
+    // reset playerTypes;
+    Object.keys(playerTypes).map((type) => !!(playerTypes[type] = []));
   });
+
+  return teamPlayers;
 };
 
-export const getFormations = payload => {
-  const formations = [];
-  for (let i = 1; i < 4; i++) {
-    formations.push({
-      id: i,
-      name: `Formation ${i}`,
-    });
+export const getFormations = async () => {
+  try {
+    const formations = await httpService.get('formations');
+    return formations.data.data || [];
+  } catch (err) {
+    console.error(err);
+    return [];
   }
-  return Promise.resolve(formations);
 };
 
-export const getTeams = payload => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      const teams = [
-        { id: 1, name: 'Karachi King' },
-        { id: 2, name: 'Multan Sultan' },
-        { id: 3, name: 'Islamabad United' },
-        { id: 4, name: 'Peshawar Zalmi' },
-        { id: 5, name: 'Lahore Qalandar' },
-        { id: 6, name: 'Quetta Gladiator' },
-      ];
-      return resolve(teams);
-    },5000)
-  })
+export const getTeams = async () => {
+  try {
+    const teams = await httpService.get('leagues/1/teams');
+    return (teams.data.data) || [];
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+};
+
+export const createLeagueTeam = async (payload) => {
+  try {
+    httpService.init(window.localStorage.getItem('access_token'));
+    const leagueTeam = await httpService.post('league-team', payload);
+    return leagueTeam;
+  } catch (err) {
+    console.log(err);
+    throw new Error('Unable to create Team');
+  }
 };

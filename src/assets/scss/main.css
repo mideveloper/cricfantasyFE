@@ -10941,6 +10941,7 @@ body.cricDesign .team-filter .player-detail-tab {
   border-radius: 30px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
