@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { initState } from './constant';
 
-const CreateTeamHeader = ({ budget, formations, teams, changeTeam, changeFormation, selectTeamValue }) => {
+const CreateTeamHeader = ({ budget, formations, teams, changeTeam, changeFormation, selectTeamValue, selectFormationValue }) => {
   return (
     <div className="row">
       <div className="col-lg-4">
         <div className="filter-drop">
           <h3>Formation</h3>
           <div className="select">
-            <select onChange={changeFormation} name="slct" id="slct">
-              <option selected disabled>
+            <select value={selectFormationValue} onChange={changeFormation} name="slct" id="slct">
+              <option selected disabled value="">
                 Select Formation
               </option>
               {formations.map(formation => (

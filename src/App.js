@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect, useHistory, useLocation } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import About from './containers/About'
 import Home from './containers/Home';
 import Login from './containers/Login';
@@ -43,7 +43,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/create-team">
             <PrivateRoute>
-              <CreateTeam />
+              <CreateTeam/>
             </PrivateRoute>
           </Route>
           <Route component={() => <div>Sorry, No Page Found</div>} />

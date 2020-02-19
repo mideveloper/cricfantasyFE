@@ -94,6 +94,12 @@ export const getLeague = async (leagueId) => {
   }
 };
 
+export const getloggedInUserTeam = () => {
+  var user = getLocalStorage('loggedInUser')
+  httpService.init(user.access_token);
+  return httpService.get('league-team');
+};
+
 export const createLeagueTeam = async (payload) => {
   try {
     var user = getLocalStorage('loggedInUser')
