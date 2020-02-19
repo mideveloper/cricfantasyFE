@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 class httpService {
   axiosInstance;
@@ -19,7 +20,16 @@ class httpService {
       },
       error => {
         if (error.response.status === 400) {
+          if (error.response && error.response.data && error.response.data.meta && error.response.data.meta.message) {
+            toast.error(error.response.data.meta.message);
+          } else if (error.response && error.response.data && error.response.data.message) {
+            toast.error(error.response.data.message);
+          } else {
+            toast.error("Error please try again later");
+          }
           return error.response
+        } else {
+          toast.error("Error please try again later");
         }
       }
     );

@@ -3,7 +3,6 @@ import { PlayersTypes, tabList, initState, tabListToClassMap as classMap, tabLis
 import PropTypes from 'prop-types';
 
 const PlayersListing = ({ playerList, togglePlayer }) => {
-  // console.log(['PlayersListing.playerList', playerList]);
   const { batsmen, bowlers, keepers, allRounders } = playerList;
   const tabListToPlayersMap = {
     [PlayersTypes.BATSMAN]: batsmen,
@@ -40,17 +39,17 @@ const PlayersListing = ({ playerList, togglePlayer }) => {
             aria-labelledby={`${classMap[tabItem]}-tab`}
           >
             <div className="row">
-                {tabListToPlayersMap[tabItem].map((player, index) => (
-                  <div key={player.id} className="col-lg-4">
-                    <div key={player.id}
-                        onClick={(/* event */) => togglePlayer(player, index)}
-                        className={player.selected ? 'player-detail-tab active': 'player-detail-tab'}>
-                        <div className="d-flex align-items-center">
-                          <i className={`icon-${classMap[tabItem]}`}></i> {player.name}</div>
-                        <div><span className="cr">{player.price} CR</span></div>
-                    </div>
+              {tabListToPlayersMap[tabItem].map((player, index) => (
+                <div key={player.id} className="col-lg-4">
+                  <div key={player.id}
+                    onClick={(/* event */) => togglePlayer(player, index)}
+                    className={player.selected ? 'player-detail-tab active' : 'player-detail-tab'}>
+                    <div className="d-flex align-items-center">
+                      <i className={`icon-${classMap[tabItem]}`}></i> {player.name}</div>
+                    <div><span className="cr">{player.price} PTS</span></div>
                   </div>
-                ))}
+                </div>
+              ))}
               <div className="col-lg-4"></div>
               <div className="col-lg-4"></div>
             </div>

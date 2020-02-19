@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import images from '../../styles/styles';
+import httpService from '../../utils/httpService';
 
 const Leaderboard = () => {
 
@@ -7,11 +7,11 @@ const Leaderboard = () => {
 
   useEffect(() => {
     async function getLeaderBoard() {
-      //const res = await httpService.get('match/schedule/2');
-      //console.log(res);
-      //setLeaderBoard(res.data.data);
-
       setLeaderBoard([]);
+      const res = await httpService.get('leagues/2/leaderboard');
+      if (res && res.data && res.data.data) {
+        setLeaderBoard(res.data.data);
+      }
     }
     getLeaderBoard();
   }, []);
@@ -39,10 +39,10 @@ const Leaderboard = () => {
                 </thead>
                 <tbody>
                   {leaderBoard && leaderBoard.map(board => (
-                    <tr key={board.userId}>
-                      <td className="logo-team d-flex">{board.teamName}</td>
-                      <td>{board.createBy}</td>
-                      <td>{board.points}</td>
+                    <tr key={board.id}>
+                      <td className="logo-team d-flex">{board.name}</td>
+                      <td>{board.user_name}</td>
+                      <td>{board.points || 0}</td>
                     </tr>
                   ))}
                   {(!leaderBoard || !leaderBoard.length) && (

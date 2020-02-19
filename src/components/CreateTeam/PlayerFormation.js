@@ -15,7 +15,6 @@ const formations = {
 
 const generateFormation = (formationData) => {
   forEach(formations, (data, playerType) => {
-    // console.log(['PlayerFormation.formationData', formationData]);
     // reset formations
     formations[playerType] = [];
 
@@ -28,7 +27,6 @@ const generateFormation = (formationData) => {
       formations[playerType][i] = playerClasses[playerType].active;
     }
   });
-  // console.log(['PlayerFormation.formations', formations]);
 };
 
 const PlayerFormation = ({ formation }) => {
@@ -37,27 +35,27 @@ const PlayerFormation = ({ formation }) => {
     generateFormation(formation);
     return (
       <div className="player-formation">
-      <div className="d-flex align-items-center">
-        {formations.keepers.map((keeper, index) => (
-          <div key={index} className={keeper}></div>
-        ))}
+        <div className="d-flex align-items-center">
+          {formations.keepers.map((keeper, index) => (
+            <div key={index} className={keeper}></div>
+          ))}
+        </div>
+        <div className="d-flex align-items-center justify-content-around">
+          {formations.batsmen.map((player, index) => (
+            <div key={index} className={player}></div>
+          ))}
+        </div>
+        <div className="d-flex align-items-center justify-content-around">
+          {formations.allRounders.map((player, index) => (
+            <div key={index} className={player}></div>
+          ))}
+        </div>
+        <div className="d-flex align-items-center justify-content-around ">
+          {formations.bowlers.map((player, index) => (
+            <div key={index} className={player}></div>
+          ))}
+        </div>
       </div>
-      <div className="d-flex align-items-center justify-content-around">
-      {formations.batsmen.map((player, index) => (
-          <div key={index} className={player}></div>
-        ))}
-      </div>
-      <div className="d-flex align-items-center justify-content-around">
-      {formations.allRounders.map((player, index) => (
-          <div key={index} className={player}></div>
-        ))}
-      </div>
-      <div className="d-flex align-items-center justify-content-around ">
-      {formations.bowlers.map((player, index) => (
-          <div key={index} className={player}></div>
-        ))}
-      </div>
-  </div>
     )
   }
   return (
