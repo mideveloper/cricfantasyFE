@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { forEach } from 'lodash';
+import { forEach, groupBy } from 'lodash';
 import { toast } from 'react-toastify';
 import { confirmAlert } from 'react-confirm-alert';
 import PlayersListing from './PlayersListing';
 import PlayerFormation from './PlayerFormation';
 import CreateTeamHeader from './CreateTeamHeader';
 import { initState, formationPlayerTypes as fPlayerTypes, LeagueId } from './constant';
-import { getAllPlayers, getFormations, getTeams, createLeagueTeam, getLeague } from '../../utils/apiService';
+import { getAllPlayers, getFormations, getTeams, createLeagueTeam, getLeague, getloggedInUserTeam, updateLeagueTeam } from '../../utils/apiService';
 
 const CreateTeam = () => {
 
+  let userLeagueTeam = null;
+  let buttonLabel = 'Create Team';
   let totalBudget = 100;
 
+  let [userTeamId, setUserTeamId] = useState(0);
   let [budget, setBudget] = useState(initState.budget);
   let [players, setPlayers] = useState(initState.players);
   const [allPlayers, setAllPlayers] = useState({});
@@ -20,6 +23,7 @@ const CreateTeam = () => {
   const [activeFormation, setActiveFormation] = useState();
   const [teamName, setTeamName] = useState('');
   const [selectTeamValue, setSelectTeamValue] = useState('');
+  const [selectFormationValue, setSelectFormationValue] = useState();
 
   /**
    * generates selectable players for PlayerListing Component
@@ -31,7 +35,7 @@ const CreateTeam = () => {
     // playersList -> [1, 2 ...]<team_id>
     Object.keys(playersList).forEach((teamId) => {
 
-      // playersList -> 1 -> ['teamIdbatsmen', 'bowlers' ...]<player_type>
+      // playersList -> 1 -> ['batsmen', 'bowlers' ...]<player_type>
       Object.keys(playersList[teamId]).forEach((playerType) => {
 
         // set selected property to make Listing work with PlayerListsing Component
@@ -116,7 +120,7 @@ const CreateTeam = () => {
         ++_activeFormation[type].current;
         setBudget(budget - Number(player.price));
       } else {
-        toast.error("You can not select " + type + " more than " + _activeFormation[type].total);
+        toast.error('You can not select ' + type + ' more than ' + _activeFormation[type].total);
       }
 
       allPlayers[teamId][type][_index] = { ...selectedPlayer };
@@ -124,7 +128,7 @@ const CreateTeam = () => {
       setPlayers({ ...allPlayers[teamId] });
       setActiveFormation({ ..._activeFormation });
     } else {
-      toast.error("Your points exceeds.");
+      toast.error('Your points exceeds.');
     }
   };
 
@@ -132,59 +136,7 @@ const CreateTeam = () => {
     setTeamName(event.target.value);
   };
 
-  const createTeam = async () => {
-    try {
-      let playerIds = [];
-
-      forEach(allPlayers, (teamData) => {
-        forEach(teamData, (players) => {
-          playerIds = playerIds.concat(
-            players.filter(player => player.selected).map(player => player.player_id)
-          );
-        });
-      });
-      if (!teamName) {
-        toast.error("Team name required.");
-      } else if (!activeFormation || !activeFormation.id) {
-        toast.error("Please select formation.");
-      } else if (!playerIds || playerIds.length < 11) {
-        toast.error("Please can not be less than 11.");
-      } else if (playerIds.length > 11) {
-        toast.error("Please can not be greater than 11.");
-      } else {
-        const payload = {
-          name: teamName || null,
-          league_id: LeagueId || null,
-          formation_id: activeFormation.id || null,
-          players: playerIds
-        }
-        const options = {
-          title: 'Are you sure?',
-          message: 'You want to save this team.',
-          buttons: [
-            {
-              label: 'Yes',
-              onClick: async () => {
-                const response = await createLeagueTeam(payload);
-                window.location.href = '/';
-              }
-            },
-            {
-              label: 'No',
-              onClick: () => { }
-            }
-          ]
-        };
-        confirmAlert(options);
-        return;
-      }
-    } catch (err) {
-      toast.error("Error while team creation please try later.");
-    }
-  };
-
-  useEffect(() => {
-    (async () => {
+  const prepareCreateTeam = async () => {
       // get data
       const [playersList, formationsList, teamsList, league] = await Promise.all([
         getSelectablePlayers(),
@@ -201,6 +153,125 @@ const CreateTeam = () => {
       setTeams(teamsList);
       setBudget(totalBudget);
       setActiveFormation();
+  };
+
+  const prepareUpdateTeam = async (_userLeagueTeam) => {
+    let selectedTeamId;
+
+    const [playersList, formationsList, teamsList] = await Promise.all([
+      getSelectablePlayers(),
+      getFormations(),
+      getTeams()
+    ]);
+
+    // const selectedPlayers = groupBy(userLeagueTeam.players, (player) => player[3]);
+
+    const updateAllPlayers = { ...playersList };
+    // looping ki intehai gandi tareen approch, leken nihayat unrealistic deadlines me esa hi chamatkaar kia jasakta he
+    Object.keys(updateAllPlayers).forEach((teamId) => {
+      Object.keys(updateAllPlayers[teamId]).forEach((playerType) => {
+        if (updateAllPlayers[teamId][playerType].length > 0) {
+          updateAllPlayers[teamId][playerType].forEach((player, index) => {
+
+            let foundPlayer = userLeagueTeam.players.find((playerData) => {
+              return playerData[0] === player.id
+            });
+            if (foundPlayer) {
+              !selectedTeamId && (selectedTeamId = player.teamId);
+              updateAllPlayers[teamId][playerType][index].selected = true;
+            }
+          });
+        }
+      });
+    });
+    setAllPlayers({ ...updateAllPlayers });
+
+    const formation = formationsList.find(formation => formation.id === parseInt(userLeagueTeam.formation_id));
+    const _activeFormation = { ...initState.activeFormation };
+    forEach(_activeFormation, (data, type) => {
+      _activeFormation[type].total = parseInt(formation[fPlayerTypes[type]]);
+      _activeFormation[type].current = parseInt(formation[fPlayerTypes[type]]);
+    });
+    _activeFormation.id = formation.id;
+    setSelectFormationValue(formation.id);
+    setActiveFormation(_activeFormation);
+
+    totalBudget = userLeagueTeam.total_budget;
+    setBudget(userLeagueTeam.remaining_budget);
+    setTeamName(userLeagueTeam.name);
+
+    setFormations(formationsList);
+    setTeams(teamsList);
+    setPlayers(allPlayers[selectedTeamId || teamsList[0].id]);
+    setSelectTeamValue(selectedTeamId || teamsList[0].id);
+    console.log(_userLeagueTeam);
+    setUserTeamId(_userLeagueTeam.id);
+  };
+
+  const createTeam = async () => {
+    try {
+      let playerIds = [];
+
+      forEach(allPlayers, (teamData) => {
+        forEach(teamData, (players) => {
+          playerIds = playerIds.concat(
+            players.filter(player => player.selected).map(player => player.player_id)
+          );
+        });
+      });
+      if (!teamName) {
+        toast.error('Team name required.');
+      } else if (!activeFormation || !activeFormation.id) {
+        toast.error('Please select formation.');
+      } else if (!playerIds || playerIds.length < 11) {
+        toast.error('Please can not be less than 11.');
+      } else if (playerIds.length > 11) {
+        toast.error('Please can not be greater than 11.');
+      } else {
+        const payload = {
+          name: teamName || null,
+          league_id: LeagueId || null,
+          formation_id: activeFormation.id || null,
+          players: playerIds
+        }
+        const options = {
+          title: 'Are you sure?',
+          message: 'You want to save this team.',
+          buttons: [
+            {
+              label: 'Yes',
+              onClick: async () => {
+                console.log(userTeamId);
+                if (userTeamId) {
+                  payload.id = userTeamId;
+                }
+                await createLeagueTeam(payload);
+              }
+            },
+            {
+              label: 'No',
+              onClick: () => { }
+            }
+          ]
+        };
+        confirmAlert(options);
+        return;
+      }
+    } catch (err) {
+      toast.error('Error while team creation please try later.');
+    }
+  };
+
+  useEffect(() => {
+    (async () => {
+      const response = await getloggedInUserTeam();
+      if (response.data.data.length > 0) {
+        userLeagueTeam = response.data.data.pop();
+        buttonLabel = 'Update Team';
+        await prepareUpdateTeam(userLeagueTeam);
+      } else {
+        await prepareCreateTeam();
+      }
     })();
   }, []);
 
@@ -210,7 +281,7 @@ const CreateTeam = () => {
         <div className="input-group mb-3">
           <input type="text" className="form-control" value={teamName} onChange={_setTeamName} placeholder="Your team name" aria-describedby="basic-addon2" />
           <div className="input-group-append">
-            <button onClick={createTeam} className="btn btn-primary navbar-toggler" type="button"> Create Team </button>
+            <button onClick={createTeam} className="btn btn-primary navbar-toggler" type="button"> {buttonLabel} </button>
           </div>
         </div>
         <CreateTeamHeader
@@ -218,6 +289,7 @@ const CreateTeam = () => {
           formations={formations}
           teams={teams}
           selectTeamValue={selectTeamValue}
+          selectFormationValue={selectFormationValue}
           changeTeam={changeTeamHandler}
           changeFormation={changeFormationHandler}
         ></CreateTeamHeader>

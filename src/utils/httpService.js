@@ -40,5 +40,8 @@ class httpService {
   static post(url, body = {}) {
     return this.axiosInstance.post(url, body);
   }
+  static put(url, body = {}) {
+    return this.axiosInstance.put(url, body);
+  }
 }
 export default httpService;
