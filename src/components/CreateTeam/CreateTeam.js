@@ -11,7 +11,7 @@ import { getAllPlayers, getFormations, getTeams, createLeagueTeam, getLeague, ge
 const CreateTeam = () => {
 
   let userLeagueTeam = null;
-  let buttonLabel = 'Create Team';
+  let buttonLabel = 'Save Team';
   let totalBudget = 100;
 
   let [userTeamId, setUserTeamId] = useState(0);
@@ -137,22 +137,22 @@ const CreateTeam = () => {
   };
 
   const prepareCreateTeam = async () => {
-      // get data
-      const [playersList, formationsList, teamsList, league] = await Promise.all([
-        getSelectablePlayers(),
-        getFormations(),
-        getTeams(),
-        getLeague(LeagueId)
-      ]);
+    // get data
+    const [playersList, formationsList, teamsList, league] = await Promise.all([
+      getSelectablePlayers(),
+      getFormations(),
+      getTeams(),
+      getLeague(LeagueId)
+    ]);
 
-      totalBudget = league.budget;
+    totalBudget = league.budget;
 
-      // set state
-      setAllPlayers(playersList);
-      setFormations(formationsList);
-      setTeams(teamsList);
-      setBudget(totalBudget);
-      setActiveFormation();
+    // set state
+    setAllPlayers(playersList);
+    setFormations(formationsList);
+    setTeams(teamsList);
+    setBudget(totalBudget);
+    setActiveFormation();
   };
 
   const prepareUpdateTeam = async (_userLeagueTeam) => {
@@ -204,7 +204,6 @@ const CreateTeam = () => {
     setTeams(teamsList);
     setPlayers(allPlayers[selectedTeamId || teamsList[0].id]);
     setSelectTeamValue(selectedTeamId || teamsList[0].id);
-    console.log(_userLeagueTeam);
     setUserTeamId(_userLeagueTeam.id);
   };
 
@@ -241,11 +240,13 @@ const CreateTeam = () => {
             {
               label: 'Yes',
               onClick: async () => {
-                console.log(userTeamId);
                 if (userTeamId) {
                   payload.id = userTeamId;
                 }
-                await createLeagueTeam(payload);
+                const x = await createLeagueTeam(payload);
+                if (x.status === 200) {
+                  window.location.href = '/';
+                }
               }
             },
             {

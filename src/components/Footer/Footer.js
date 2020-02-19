@@ -7,7 +7,7 @@ const Footer = () => {
 				<div className="row align-items-center">
 					<div className="col-md-6">
 						<div className="ftco-footer-widget">
-							<h3 className="m-0">10Parls Cricket Fantasy</h3>
+							<h3 className="m-0">10Pearls Cricket Fantasy</h3>
 						</div>
 					</div>
 					{/* <div className="col-md">
