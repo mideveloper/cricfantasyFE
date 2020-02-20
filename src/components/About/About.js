@@ -9,56 +9,36 @@ const About = () => {
           <div className="col-md-12 pl-lg-12 py-12">
             <div className="row justify-content-start pb-3">
               <div className="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
-                <h2 className="mb-4">Points will be awarded on the following basis in Cricket Fantasy</h2>
+                <h2 className="mb-4">Welcome! We are so excited to announce in house PSL- Fantasy League at 10Pearls</h2>
               </div>
             </div>
             <div className="row">
               <div className="col-md-12">
-                <h4>Batsman</h4>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Scoring 1 run = +1 point</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Scoring a 30 = +20 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Scoring a 50 = +50 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Scoring a 100 = +150 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; On Batting Strike Rate Less than 100 = -10 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; On Batting Strike Rate between 100 to 150 = +10 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; On Batting Strike Rate between 150.01 to 200 = +20 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; On Batting Strike Rate above 200.01 = +30 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; On Getting Out = -5 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; On Hitting a six = +6 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; On Hitting a four = +4 points</p>
-                {/* <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Scoring a Duck = -5 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Scoring a Golden Duck = -10 points</p> */}
+                <h3>Steps to use Fantasy League App</h3>
+                <ul>
+                  <li>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Click on the ‘Play’ button for Team Creation</li>
+                  <li>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Log in with your COGS username and password</li>
+                  <li>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Enter Team name (e.g: Shaheen 11)</li>
+                  <li>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Select formation 1/2/3, each formation has their unique criteria for players selection (like how many batsmen, bowler, keeper, all-rounder you can select within your allotted points)
+                    <small><i>TIP: I would suggest you play around the formation, and keep an eye on the pitch below to see the difference</i></small>
+                  </li>
+                  <li>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Select Team. You can create your own team by selecting any member from multiple teams</li>
+                  <li>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; After selecting the team, a list of players will be displayed those players can be selected</li>
+                  <li>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; The selected player will be displayed on the pitch below</li>
+                  <li>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Once you have done your team selection Click on ‘Create Team’ button besides team name box**</li>
+                  <li>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Voila, your team is now created. Keep an eye on the Leaderboards (Home page) to view your team.</li>
+                </ul>
+
+                <h4>** You can make changes until the LIVE PSL League starts. Please note NO CHANGES will be allowed after that, therefore, choose your players wisely </h4>
+
                 <br />
 
-                <h4>Bowler</h4>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Bowler Getting a wicket = +20 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Bowler Getting a Four wicket haul = +150 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Bowler Getting a Five Wicket Haul = +200 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Bowler’s Bowling economy less than or equall to 6 = +30 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Bowler’s Bowling economy greater than 6 and less than or equal to 7 = +15 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Bowler’s Bowling economy greater than or equal to 8 and less than or equal to 9 = -10 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Bowler’s Bowling economy greater than 9 = -20 points</p>
-                {/* <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Bowler getting a hat-trick = +200 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Bowling a wide ball = -1 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Bowling a no ball = -2 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Bowling a maiden over = +30 points</p> */}
-                <br />
+                <h3>Points Calculation</h3>
+                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; The points will be updated after every match based on your team performance</p>
+                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;  You can see point calculation on <a href="http://10.0.0.23/points">Points</a> Tab</p>
 
-                {/* <h4>Fielder/WicketKeeper</h4>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; On taking a catch = +10 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Wicketkeeper’s 1 stump = +10 points</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Run out by Player = +10 points</p>
-                <br /><br /> */}
-
-                {/* <h4>Bonus</h4>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Captain x2 points (Captain’s attained points are doubled)</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; <b>If Your selected Player is awarded Man Of the Match then You get 3x points for him</b></p>
-                <br /><br /> */}
-
-                <h4>Notes</h4>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Substitutes will not be awarded any points.</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; Changing captain and Man of the Match will not be counted as a transfer.</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; <b>No Extra Transfers for Play-offs</b></p>
+                <h3>It does not end here. We will Pick and choose some of our Fantasy Teams to GO and WATCH their selected players LIVE in the stadium
+                So what are you waiting for, click PLAY to begin!!!. </h3>
               </div>
             </div>
           </div>

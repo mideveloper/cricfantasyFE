@@ -53,6 +53,11 @@ const Header = props => {
                 About
               </a>
             </li>
+            <li className="nav-item">
+              <a href="/points" className="nav-link">
+                Points
+              </a>
+            </li>
             <li className="nav-item cta">
               <a
                 style={{ cursor: 'pointer' }}

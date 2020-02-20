@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import About from './containers/About'
+import About from './containers/About';
+import Points from './containers/Points';
 import Home from './containers/Home';
 import Login from './containers/Login';
 import CreateTeam from './containers/CreateTeam';
@@ -40,6 +41,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
+          <Route exact path="/points" component={Points} />
           <Route path="/login" component={Login} />
           <Route path="/create-team">
             <PrivateRoute>
