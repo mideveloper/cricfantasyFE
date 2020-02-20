@@ -35,7 +35,7 @@ const About = () => {
 
                 <h3>Points Calculation</h3>
                 <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; The points will be updated after every match based on your team performance</p>
-                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;  You can see point calculation on <a href="http://10.0.0.23/points">Points</a> Tab</p>
+                <p>&nbsp; &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;  You can see point calculation on <a href="/points">Points</a> Tab</p>
 
                 <h3>It does not end here. We will Pick and choose some of our Fantasy Teams to GO and WATCH their selected players LIVE in the stadium
                 So what are you waiting for, click PLAY to begin!!!. </h3>
