@@ -328,7 +328,7 @@ AOS.init({
 
 
 	function makeTimer() {
-		var endTime = new Date("20 Feb 2020 19:00:00");
+		var endTime = new Date("07 Mar 2020 00:00:00");
 		var t = Date.parse(endTime) - Date.parse(new Date());
 		var seconds = Math.floor((t / 1000) % 60);
 		var minutes = Math.floor((t / 1000 / 60) % 60);

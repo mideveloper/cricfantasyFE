@@ -120,7 +120,11 @@ const CreateTeam = () => {
         ++_activeFormation[type].current;
         setBudget(budget - Number(player.price));
       } else {
-        toast.error('You can not select ' + type + ' more than ' + _activeFormation[type].total);
+        if (_activeFormation[type].total) {
+          toast.error('You can not select ' + type + ' more than ' + _activeFormation[type].total);
+        } else {
+          toast.error(type + ' not available in formation');
+        }
       }
 
       allPlayers[teamId][type][_index] = { ...selectedPlayer };
@@ -203,7 +207,7 @@ const CreateTeam = () => {
     setFormations(formationsList);
     setTeams(teamsList);
     setPlayers(allPlayers[selectedTeamId || teamsList[0].id]);
-    setSelectTeamValue(selectedTeamId || teamsList[0].id);
+    // setSelectTeamValue(selectedTeamId || teamsList[0].id);
     setUserTeamId(_userLeagueTeam.id);
   };
 

@@ -71,7 +71,7 @@ const Header = props => {
                 <img className="rounded-circle" src={userDetails.profile_picture} alt={userDetails.first_name} />
                 <div class="dropdown ml-2">
                   <button class="dropdown-toggle border-0 font-weight-bold" type="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {userDetails.first_name}
+                    {userDetails.first_name} {userDetails.last_name}
                   </button>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
                     <button class="dropdown-item" type="button" onClick={() => logout()}>Logout</button>
